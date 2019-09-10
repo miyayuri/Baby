@@ -1,0 +1,2 @@
+class RecommendLike < ApplicationRecord
+end

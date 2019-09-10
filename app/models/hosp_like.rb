@@ -1,0 +1,2 @@
+class HospLike < ApplicationRecord
+end

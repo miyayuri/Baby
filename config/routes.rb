@@ -10,7 +10,14 @@ devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
 
+# 名前空間上のroute
+namespace :admin do
+  resources :users
+end
 
+namespace :user do
+  resources :users,only: [:show, :edit, :update, :destroy]
+end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

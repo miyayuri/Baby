@@ -1,0 +1,2 @@
+class HospReview < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+module Admin::HospsHelper
+end
