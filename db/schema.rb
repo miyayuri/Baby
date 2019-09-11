@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_110309) do
+ActiveRecord::Schema.define(version: 2019_09_10_070856) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,67 @@ ActiveRecord::Schema.define(version: 2019_09_05_110309) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "hosp_likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "hosp_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hosp_reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "hosp_id", null: false
+    t.text "body", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hosps", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.integer "user_id", null: false
+    t.integer "prefecture_id", null: false
+    t.text "body", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "periods", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recommend_likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "recommend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recommends", force: :cascade do |t|
+    t.integer "type", null: false
+    t.integer "user_id", null: false
+    t.string "genre", default: "", null: false
+    t.string "title", default: "", null: false
+    t.text "body", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "regrets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "period_id", null: false
+    t.string "body", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
