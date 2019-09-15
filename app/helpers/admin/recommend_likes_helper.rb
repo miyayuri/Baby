@@ -1,0 +1,2 @@
+module Admin::RecommendLikesHelper
+end

@@ -1,0 +1,29 @@
+<div class='body'>
+  <div class='container'>
+   <div class="row">
+   <h1 class="col-xs-10 col-xs-offset-2">私のやってみたい一覧</h1>
+   <table class="table table-striped">
+    <thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+                <th></th>
+			</tr>
+	</thead>
+	    <tbody>
+        <% @recommend_likes.each do |recommend_like| %>
+        <tr>
+            <td><%= recommend_like.recommend.genre %></td>
+            <td><%= recommend_like.recommend.title %></td>
+            <td><%= recommend_like.recommend.body %></td>
+            <td><%= link_to "詳細を見る", user_recommend_path(recommend_like.recommend.id), class:"btn btn-success  btn-xs " %>
+        </tr>
+        <% end %>
+		</tbody>
+	</table>
+   </div>
+  </div>
+ </div>
+
+

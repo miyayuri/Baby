@@ -1,0 +1,29 @@
+ <div class='body'>
+  <div class='container'>
+   <div class="row">
+   <h1 class="col-xs-10 col-xs-offset-2">不妊おすすめ一覧</h1>
+   <table class="table table-striped">
+    <thead>
+			<tr>
+				<th>ジャンル</th>
+				<th>Title</th>
+				<th>bosy</th>
+                <th></th>
+			</tr>
+	</thead>
+	    <tbody>
+        <% @recommends.each do |recommend| %>
+        <tr>
+            <td><%= recommend.genre %></td>
+            <td><%= recommend.title %></td>
+            <td><%= recommend.body %></td>
+            <td><%= link_to "詳細を見る", user_recommend_path(recommend.id), class:"btn btn-success" %>
+        </tr>
+        <% end %>
+		</tbody>
+	</table>
+   </div>
+  </div>
+ </div>
+
+

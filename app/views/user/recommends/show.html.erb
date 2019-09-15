@@ -1,0 +1,54 @@
+<div class="container">
+    <section class="row">
+        <h1 class="col-xs-11 col-xs-offset-1">おすすめ情報　詳細</h1>
+        <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-9">
+            <h2>ジャンル</h2>
+                <label><%= @recommend.genre %></label>
+            <h2>タイトル</h2>
+                <label><%= @recommend.title %></label>
+            <h2>内容</h2>
+                <label><%= @recommend.body %></label>
+
+
+
+    <% if user_signed_in? %>
+        <%# いいね!ボタンの実装  %>
+        <% if @recommend.favorited_by?(current_user) %>
+            <li><%= link_to user_recommend_recommend_likes_path(@recommend), method: :delete do %>
+            <i class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color: red;"></i>
+            <%# <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>♡ %>
+            <% end %>
+            <%= @recommend.recommend_likes.count %> いいね
+            </li>
+        <% else %>
+            <li><%= link_to user_recommend_recommend_likes_path(@recommend), method: :post do %>
+            <i class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color: black;"></i>
+            <%# <i class="fa fa-heart-o" aria-hidden="true"></i>♡ %>
+            <% end %>
+            <%= @recommend.recommend_likes.count %> いいね
+        <% end %>
+
+
+        <% if @recommend.user.id == current_user.id%>
+            <div class="form-group has-icon">
+			<%= link_to "編集",  edit_user_recommend_path ,class:"btn btn-success"%></div>
+             <div class="form-group has-icon">
+            <%= link_to "削除する", user_recommend_path(@recommend.id), class:"btn btn-danger", method: :delete %></div>
+    	<% end %>
+              
+
+        <% if @recommend.term == 'infertility' %>
+            <div class="form-group has-icon">	
+            <%= link_to "不妊一覧", user_infer_index_path, class:"btn btn-success" %></div>
+        <% else%>
+            <div class="form-group has-icon">
+            <%= link_to "妊娠一覧",  user_preg_list_path, class:"btn btn-success" %>
+        <% end %></div>
+    <% end %>
+
+            </div>
+            </div>
+        </div>
+    </section>
+</div>

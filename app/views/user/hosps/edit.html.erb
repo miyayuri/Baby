@@ -1,0 +1,31 @@
+<body>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+        <h2 class="text-center">病院編集</h2>
+
+        <%= form_for @hosp, url: user_hosp_path(@hosp) do |hosp| %>
+
+        <div class="col-md-10 col-md-offset-1">
+            <label class="control-label" for="inputname">病院名</label>
+            <%= hosp.text_field :name, class:"form-control"%>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+            <h4 class="col-xs-12">都道府県</h4>
+            <%= hosp.collection_select :prefecture_id,  Prefecture.all, :id, :name, {}, placeholder: "選択してください", class: 'form-control h4' %> 
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+            <label class="control-label" for="inptbody">内容</label>
+            <%= hosp.text_field :body, class:"form-control"%>
+        </div>
+
+        <div class="col-xs-10 col-xs-offset-1">
+            <%= hosp.submit "変更する", class:"form-control btn btn-primary" %>
+        </div>
+        <% end %>
+        </div>
+    </div>
+    </div>
+</body>
