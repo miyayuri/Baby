@@ -1,1 +1,46 @@
-<h1>編集ページ</div>
+<body>
+<section class="slice slice-lg sct-color-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="style-1 rounded has-shadow-1">
+                    <h2 class="">ユーザー情報　編集</h2>
+
+                        <%= form_for @user, url: user_user_path(@user) do |f| %>
+
+                          <div class="form-group has-icon">
+                            <label class="control-label" for="inputnickname">ニックネーム</label>
+                            <%= f.text_field :nickname, autofocus: true, class:"form-control", id:"inputnickname", placeholder:"ニックネーム"%>
+                          </div>
+
+                          <div class="form-group has-icon">
+                            <label class="control-label" for="name">名前</label>
+                            <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputname", placeholder:"名前"%>
+                          </div>
+
+                          <div class="form-group has-icon">
+                            <label class="control-label" for="inputftel">電話番号</label>
+                            <%= f.text_field :tel, autofocus: true, class:"form-control", id:"inputtel", placeholder:"電話番号"%>
+                          </div>
+
+                          <div class="form-group has-icon">
+                            <label class="control-label" for="inputfemail">メールアドレス</label>
+                            <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputemail", placeholder:"メールアドレス"%>
+                          </div>
+
+                          <div class="form-group has-icon">
+                          <%= f.submit "登録内容を変更する", class:"form-control btn btn-primary" %></div>
+                          <div class="form-group has-icon">
+                          <%= link_to "削除", user_user_path(@user.id), class:"form-control btn btn-danger", method: :delete %></div>
+                        <% end %>
+                </div>
+            </div>
+        </div>,
+    </div>
+</section>
+</body>
+
+
+
+

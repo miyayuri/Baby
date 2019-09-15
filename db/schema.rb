@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_09_10_070856) do
   end
 
   create_table "recommends", force: :cascade do |t|
-    t.integer "type", null: false
+    t.integer "term", default: 0, null: false
     t.integer "user_id", null: false
     t.string "genre", default: "", null: false
     t.string "title", default: "", null: false

@@ -1,4 +1,4 @@
 class Hosp < ApplicationRecord
     belongs_to :user
-    bolongs_to :prefecture
+    belongs_to :prefecture
 end

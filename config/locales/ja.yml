@@ -1,4 +1,9 @@
 ja:
+  enums:
+    recommend:
+      term:
+        infertility: "妊活"
+        pregnancy: "妊娠"
   activerecord:
     attributes:
       user:

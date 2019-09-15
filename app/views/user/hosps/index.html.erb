@@ -1,0 +1,29 @@
+ <div class='body'>
+  <div class='container'>
+   <div class="row">
+   <h1 class="col-xs-10 col-xs-offset-2">おすすめ病院一覧</h1>
+   <table class="table table-striped">
+    <thead>
+			<tr>
+				<th>名前</th>
+				<th>都道府県</th>
+				<th>内容</th>
+                <th></th>
+			</tr>
+	</thead>
+	    <tbody>
+        <% @hosp.each do |hosp| %>
+        <tr>
+            <td><%= hosp.name %></td>
+            <td><%= hosp.prefecture.name %></td>
+            <td><%= hosp.body %></td>
+            <td><%= link_to "詳細を見る", user_hosp_path(hosp.id), class:"btn btn-success" %>
+        </tr>
+        <% end %>
+		</tbody>
+	</table>
+   </div>
+  </div>
+ </div>
+
+
