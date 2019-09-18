@@ -7,4 +7,11 @@ class Recommend < ApplicationRecord
 
     enum term: {infertility: 0,pregnancy: 1}
     #０妊活　１妊娠
+
+    validates :user_id, presence: true
+    validates :genre, presence: true
+    validates :title, presence: true
+    validates :body, presence: true
+    validates :term, presence: true
+
 end

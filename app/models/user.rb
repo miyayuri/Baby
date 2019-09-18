@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  
-  
   has_many :hosps, dependent: :destroy
   has_many :hosp_reviews, dependent: :destroy
   has_many :hosp_likes, dependent: :destroy
@@ -13,5 +11,8 @@ class User < ApplicationRecord
   has_many :recommend_likes, dependent: :destroy
   has_many :regrets, dependent: :destroy
 
+  validates :name, presence: true
+  validates :nickname, presence: true
+  validates :tel, presence: true
 
 end

@@ -4,24 +4,7 @@
         <div class='row'>
             <h2 class="title text-center">おすすめ病院 詳細</h2>
             <div class="col-xs-2">
-                <div class="sidebar"> 
-                <%# <p>妊活TOP</p> %>
-                <%= link_to "妊活TOP", infer_top_path %><br>
-                <br><br>
-                <p>わたしのオススメ医院</p>
-                <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
-                <%= link_to "医院を一覧で見る", user_hosps_path %><br>
-                <br><br>
-                <p>期間中の過ごし方</p>
-                <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
-                <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
-                <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-
-                <br><br>
-                <p>様々な生き方</p>
-                <%= link_to "", "#"%><br> 
-                <%= link_to "", "#"%><br> 
-                </div>
+              <%= render 'layouts/infsidebar' %>
             </div>
             <div class='col-xs-10'>
                 <table class="table table-striped">
@@ -30,9 +13,14 @@
 	    			<th>名前</th>
 		    		<th>都道府県</th>
 			    	<th>内容</th>
+                    <% if user_signed_in? %>
                     <th>良かったら押してね</th>
+                    <% else %>
+                    <th><th>
+                    <% end %>
     			</tr>
 	            </thead>
+                <tbody>
                 <tr>
                     <td><%= @hosp.name %></td>
                     <td><%= @hosp.prefecture.name%></td>
@@ -44,20 +32,27 @@
                             <%= link_to  user_hosp_hosp_likes_path(@hosp), method: :delete do %>
                             <i class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color: red;"></i>
                             <%# <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>♡ %>
-                        <% end %>
-                        <%= @hosp.hosp_likes.count %> 
+                            <% end %>
+                            <%= @hosp.hosp_likes.count %> 
                         <% else %>
                             <%= link_to  user_hosp_hosp_likes_path(@hosp), method: :post do %>
                             <i class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color: black;"></i>
                             <%# <i class="fa fa-heart-o" aria-hidden="true"></i>♡ %>
-                        <% end %>
-                        <%= @hosp.hosp_likes.count %> 
-                        <% end %>
+                            <% end %>
+                            <%= @hosp.hosp_likes.count %> 
+                        <% end %></td>
+                    <% else %>
+                        <div class="text-center">
+                        <p>会員登録して、良かった医院をオススメしよう！</p>                
+                        </div>
                     <% end %>
                 </tr>
+                </tbody>
                 </table>
+                    
+
                 <div class="link">
-                    <% if @hosp.user.id == current_user.id%>
+                    <% if user_signed_in? && current_user.id == @hosp.user.id  %>
                     <%= link_to "編集する",  edit_user_hosp_path ,class:"btn btn-success"%>                      
                     <%= link_to "削除する", user_hosp_path(@hosp.id), class:"btn btn-danger", method: :delete %></div>
                     <% end %>
@@ -65,7 +60,7 @@
 
                 
                 <div class="user_review">
-                <h3 class="review_titile"><b>ユーザーレビュー</b></h3>
+                <h3 class="review_titile text-center"><b>ユーザーレビュー</b></h3>
                     <div class="review">
                     <% @hosp.hosp_reviews.each do |review| %>
                         <div olspan="3" class="user_info">
@@ -80,13 +75,16 @@
                     </div>
                     <% end %>
                 </div>
-                <%= form_for [@hosp, @hosp_review], url:user_hosp_hosp_reviews_path(@hosp)  do |f| %>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-                    </div>
-                    </div>
-                <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+
+                <% if user_signed_in? %>
+                    <%= form_for [@hosp, @hosp_review], url:user_hosp_hosp_reviews_path(@hosp)  do |f| %>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                        </div>
+                        </div>
+                    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+                    <% end %>
                 <% end %>
             </div>
         </div>

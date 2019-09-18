@@ -1,4 +1,5 @@
 class User::HospReviewsController < ApplicationController
+	before_action :authenticate_user!
     def create
 		hosp = Hosp.find(params[:hosp_id])
 		hosp_review = current_user.hosp_reviews.new(hosp_review_params)
@@ -26,6 +27,9 @@ class User::HospReviewsController < ApplicationController
 	def edit
 		@hosp_review = HospReview.find(params[:id])
 		@hosp = Hosp.find(params[:hosp_id])
+		if @hosp_review.user.id != current_user.id
+			redirect_to user_hosp_path(@hosp)
+		end
 	end
 
 	def update

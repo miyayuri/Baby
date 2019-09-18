@@ -7,4 +7,10 @@ class Hosp < ApplicationRecord
     def favorited_by?(user)
         hosp_likes.where(user_id: user.id).exists?
     end
+
+    validates :name, presence: true
+    validates :user_id, presence: true
+    validates :prefecture_id, presence: true
+    validates :body, presence: true
+
 end

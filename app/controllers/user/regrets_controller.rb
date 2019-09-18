@@ -1,5 +1,4 @@
 class User::RegretsController < ApplicationController
-
     def index
         @regret = Regret.new
         @regrets = Regret.all
@@ -8,11 +7,24 @@ class User::RegretsController < ApplicationController
     def create
         @regret = Regret.new(regret_params)
         @regret.user_id = current_user.id
-        @regret.save
-        redirect_back(fallback_location: root_url)
+        if  @regret.save
+            flash[:success] = " 投稿しました！"
+            redirect_back(fallback_location: root_url)
+        else
+            flash[:success] = "コメントの投稿に失敗しました！"
+            redirect_back(fallback_location: root_url)
+        end
     end
 
     def destroy
+        @regret = Regret.find(params[:id])
+        if  @regret.destroy
+            flash[:success] = "削除しました！！！"
+            redirect_back(fallback_location: root_url)
+        else
+            flash[:success] = "削除に失敗しました！"
+            redirect_back(fallback_location: root_url)
+        end
     end
 
     private

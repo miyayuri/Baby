@@ -1,7 +1,9 @@
 class User::RecommendLikesController < ApplicationController
     def index
         # @recommend_likes = Recommend.where(user_id: params[:id])
-        @recommend_likes = current_user.recommend_likes
+        if user_signed_in?
+            @recommend_likes = current_user.recommend_likes
+        end
     end
 
 

@@ -15,6 +15,9 @@ class User::HospsController < ApplicationController
 
     def edit
         @hosp = Hosp.find(params[:id])
+        if @hosp.user.id != current_user.id
+        redirect_to user_hosp_path(@hosp.id)
+        end
     end
 
     def create
@@ -27,7 +30,7 @@ class User::HospsController < ApplicationController
     def update
         @hosp = Hosp.find(params[:id])
         if @hosp.update(hosp_params)
-            redirect_to user_hosps_path(@hosp.id)
+            redirect_to user_hosp_path(@hosp.id)
         else render :edit
         end            
     end

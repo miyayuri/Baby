@@ -1,0 +1,20 @@
+            <div class="sidebar"> 
+                <p>妊娠TOP</p>
+                <%= link_to "妊娠TOP", preg_top_path %>
+                <br><br>
+                <p>私のやっておけば良かった！</p>
+                <%= link_to "一言集！", user_regrets_path %>
+                <br><br>
+                <p>国の支援制度</p>
+                <%= link_to "国の支援制度", "#" %>
+                <br><br>
+                <p>期間中の過ごし方</p>
+                <%= link_to "オススメの過ごし方を登録", user_preg_latest_path %><br>
+                <%= link_to "過ごし方の一覧", user_preg_list_path %><br>
+                <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
+                <br><br>
+                <% if user_signed_in? %>
+                <p>マイページ</p>
+                <%= link_to "マイページ",user_user_path(current_user.id) %>
+                <% end %>
+            </div>

@@ -4,24 +4,7 @@
             <h2 class="title text-center">妊活TOP</h2>
         
             <div class="col-xs-2">
-                <div class="sidebar"> 
-                <p>妊活TOP</p>
-                <%= link_to "妊活TOP", infer_top_path %><br>
-                <br><br>
-                <p>わたしのオススメ医院</p>
-                <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
-                <%= link_to "医院を一覧で見る", user_hosps_path %><br>
-                <br><br>
-                <p>期間中の過ごし方</p>
-                <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
-                <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
-                <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-
-                <br><br>
-                <p>様々な生き方</p>
-                <%= link_to "", "#"%><br> 
-                <%= link_to "", "#"%><br> 
-                </div>
+                <%= render 'layouts/infsidebar' %>               
             </div>
             <div class='col-xs-10'>
             </div>

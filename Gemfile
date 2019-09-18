@@ -65,7 +65,6 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem "bootstrap-sass", ">= 3.4.1"
-gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'rails-ujs'

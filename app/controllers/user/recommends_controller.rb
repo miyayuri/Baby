@@ -40,7 +40,9 @@ class User::RecommendsController < ApplicationController
 
     def edit
         @recommend = Recommend.find(params[:id])
-  
+        if @recommend.user.id != current_user.id
+            redirect_to user_recommend_path(@recommend)
+            end
     end
 
     def update
