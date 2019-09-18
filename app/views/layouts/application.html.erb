@@ -8,8 +8,28 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header class="header">
+        <nav class="nav navbar-nav navbar-left" >
+          <span class="taitoru">Baby</span></nav>
+
+        <nav class="nav navbar-nav navbar-right" >
+         <% if user_signed_in? %>
+          <ol class="breadcrumb">
+            <!--ログインしてる -->
+              <li><%= link_to 'TOP', root_path, class:"text-center h5" %></li>
+              <li><%= link_to "LOGOUT", destroy_user_session_path, class:"hm-link text-center h5", method: :delete %></li>
+          </ol>
+         <% else %>
+         <ol class="breadcrumb">
+            <!--  ログインしてない -->
+              <li><%= link_to_unless_current "LOGIN", new_user_session_path, class:"hm-link text-center h5" %></li>
+              <li><%= link_to_unless_current "SIGN UP", new_user_registration_path, class:"hm-link text-center h5" %></li>
+              <li><%= link_to 'TOP', root_path, class:"hm-link text-center h5" %>
+         <% end %>
+        </nav>
+      </div>
+      </header>
     <%= yield %>
   </body>
 </html>

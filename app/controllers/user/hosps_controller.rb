@@ -10,6 +10,7 @@ class User::HospsController < ApplicationController
     
     def show
         @hosp = Hosp.find(params[:id])
+        @hosp_review = HospReview.new
     end
 
     def edit
@@ -39,7 +40,7 @@ class User::HospsController < ApplicationController
 
     def hosp_params
         params.require(:hosp).permit(:name, :user_id, :prefecture_id, :body)
-      end
+    end
     
-     
+    
 end

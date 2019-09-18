@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pregnancy/top'
+  get 'infertility/top'
   get 'abouts/top'
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -13,6 +15,8 @@ devise_for :users, controllers: {
 
 
 root 'abouts#top'
+get 'infertility/top' => 'infertility#top', as:"infer_top" 
+get 'pregnancy/top' => 'pregnancy#top',as:"preg_top" 
 
 # 名前空間上のroute
 namespace :admin do
@@ -23,7 +27,7 @@ namespace :user do
   resources :users,only: [:show, :edit, :update, :destroy]
   resources :hosps do
     resources :hosp_reviews, only: [:create, :edit, :update, :destroy]
-    resources :hosp_likes, only: [:create, :destroy, :index]
+    resource :hosp_likes, only: [:create, :destroy]
   end
   get 'recommends/infertility/new' => 'recommends#new', as:"infer_new" 
   post 'recommends/infertility' => 'recommends#create', as:"infer_create"

@@ -154,3 +154,35 @@ end
 Prefecture.find_or_create_by(id: 47) do |prefecture|
   prefecture.name = "沖縄県"
 end
+
+#  妊娠期間の登録
+Period.find_or_create_by(id: 1) do |period|
+  period.name = "1ヶ月目"
+end
+Period.find_or_create_by(id: 2) do |period|
+  period.name = "2ヶ月目"
+end
+Period.find_or_create_by(id: 3) do |period|
+  period.name = "3ヶ月目"
+end
+Period.find_or_create_by(id: 4) do |period|
+  period.name = "4ヶ月目"
+end
+Period.find_or_create_by(id: 5) do |period|
+  period.name = "5ヶ月目"
+end
+Period.find_or_create_by(id: 6) do |period|
+  period.name = "6ヶ月目"
+end
+Period.find_or_create_by(id: 7) do |period|
+  period.name = "7ヶ月目"
+end
+Period.find_or_create_by(id: 8) do |period|
+  period.name = "8ヶ月目"
+end
+Period.find_or_create_by(id: 9) do |period|
+  period.name = "9ヶ月目"
+end
+Period.find_or_create_by(id: 10) do |period|
+  period.name = "10ヶ月目"
+end

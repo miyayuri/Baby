@@ -1,10 +1,11 @@
- <div class='body'>
-    <div class="container">
-        <section class="row">
-        <h2 class="title text-center">病院編集</h2>
+<div class='body'>
+    <div class='container'>
+        <div class='row'>
+            <h2 class="title text-center">妊活TOP</h2>
+        
             <div class="col-xs-2">
                 <div class="sidebar"> 
-                <%# <p>妊活TOP</p> %>
+                <p>妊活TOP</p>
                 <%= link_to "妊活TOP", infer_top_path %><br>
                 <br><br>
                 <p>わたしのオススメ医院</p>
@@ -15,6 +16,7 @@
                 <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
                 <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
                 <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
+
                 <br><br>
                 <p>様々な生き方</p>
                 <%= link_to "", "#"%><br> 
@@ -22,19 +24,7 @@
                 </div>
             </div>
             <div class='col-xs-10'>
-            <%= form_for @hosp, url: user_hosp_path(@hosp) do |hosp| %>
-                <label class="control-label" for="inputname">病院名</label>
-                <%= hosp.text_field :name, class:"form-control"%>
-
-                <h4 class="col-xs-12">都道府県</h4>
-                <%= hosp.collection_select :prefecture_id,  Prefecture.all, :id, :name, {}, placeholder: "選択してください", class: 'form-control h4' %> 
-
-                <label class="control-label" for="inptbody">内容</label>
-                <%= hosp.text_field :body, class:"form-control"%>
-
-                <%= hosp.submit "変更する", class:"form-control btn btn-primary" %>
-            <% end %>
             </div>
-        </section>
+        </div>
     </div>
 </div>
