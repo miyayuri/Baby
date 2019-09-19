@@ -2,6 +2,19 @@
     <div class="container">
         <section class="row">
         <h2 class="title text-center">病院編集</h2>
+
+                <% if flash[:success] %>
+                <p class="text-center"><%= flash[:success] %></p>
+                <% end %>
+
+                <% if @hosp.errors.any? %>
+                <div id="error_explanation" class="alert alert-danger">
+                <ul>
+                <% @hosp.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+                <% end %>
+
             <div class="col-xs-2">
                 <div class="sidebar"> 
                 <%= render 'layouts/infsidebar' %>

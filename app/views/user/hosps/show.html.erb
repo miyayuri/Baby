@@ -7,6 +7,19 @@
               <%= render 'layouts/infsidebar' %>
             </div>
             <div class='col-xs-10'>
+
+                    <% if flash[:success] %>
+                    <p class="text-center"><%= flash[:success] %></p>
+                    <% end %>
+
+                    <% if @hosp_review.errors.any? %>
+                    <div id="error_explanation" class="alert alert-danger">
+                    <ul>
+                    <% @hosp_review.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                    <% end %>
+
                 <table class="table table-striped">
                 <thead>
     			<tr>

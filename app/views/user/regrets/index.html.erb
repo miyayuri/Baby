@@ -2,10 +2,23 @@
 <div class="container">
     <section class="row">
      <h2 class="title text-center">私のやっておけば良かった！</h2>
-     
+
+        <% if flash[:success] %>
+            <p><%= flash[:success] %></p>
+        <% end %>
+
+        <% if @regret.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+        <ul>
+        <% @regret.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        <% end %>
+
         <div class="col-xs-2">
         <%= render 'layouts/presidebar' %>
         </div>
+        
         <div class='col-xs-10'>
         <% if user_signed_in? %>
             <div class="">

@@ -11,8 +11,7 @@ class User::RegretsController < ApplicationController
             flash[:success] = " 投稿しました！"
             redirect_back(fallback_location: root_url)
         else
-            flash[:success] = "コメントの投稿に失敗しました！"
-            redirect_back(fallback_location: root_url)
+            render :index
         end
     end
 
@@ -22,7 +21,6 @@ class User::RegretsController < ApplicationController
             flash[:success] = "削除しました！！！"
             redirect_back(fallback_location: root_url)
         else
-            flash[:success] = "削除に失敗しました！"
             redirect_back(fallback_location: root_url)
         end
     end

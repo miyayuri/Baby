@@ -2,7 +2,9 @@
     <div class='container'>
         <section class="row">
             <h2 class="text-center">不妊おすすめ一覧</h2>
-
+                <% if flash[:success] %>
+                <h4 class="text-center"><%= flash[:success] %></h4>
+                <% end %>
             <div class="col-xs-2">
             <%= render 'layouts/infsidebar' %>    
             </div>

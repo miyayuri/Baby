@@ -2,6 +2,11 @@
     <div class='container'>
         <section class="row">
         <h2 class="title text-center">おすすめ病院一覧</h2>
+        
+            <% if flash[:success] %>
+            <p><%= flash[:success] %></p>
+            <% end %>
+
             <div class="col-xs-2">
             <%= render 'layouts/infsidebar' %>
             </div>

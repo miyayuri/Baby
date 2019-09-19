@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      recommend: "オススメ"
+      hosp: "病院"
+      hosp_review: "レビュ"
+    attributes:
+      recommend:
+        genre: "ジャンル"
+        title: "タイトル"
+        body: "内容" 
+      hosp:
+        name: "病院名"
+        body: "内容"     
+      hosp_review:
+        body: "内容"

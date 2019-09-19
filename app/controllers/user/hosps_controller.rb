@@ -1,5 +1,4 @@
 class User::HospsController < ApplicationController
-
     def new
         @hosp = Hosp.new
     end
@@ -16,23 +15,29 @@ class User::HospsController < ApplicationController
     def edit
         @hosp = Hosp.find(params[:id])
         if @hosp.user.id != current_user.id
-        redirect_to user_hosp_path(@hosp.id)
+           redirect_to user_hosp_path(@hosp.id)
         end
     end
 
     def create
         @hosp = Hosp.new(hosp_params)
         @hosp.user_id = current_user.id
-        @hosp.save
-        redirect_to user_hosps_path
+        if  @hosp.save
+            flash[:success] = " 投稿しました！"
+            redirect_to user_hosps_path
+        else
+            render :new
+        end
     end
 
     def update
         @hosp = Hosp.find(params[:id])
-        if @hosp.update(hosp_params)
+        if  @hosp.update(hosp_params)
+            flash[:success] = " 投稿しました！"
             redirect_to user_hosp_path(@hosp.id)
-        else render :edit
-        end            
+        else
+            render :edit
+        end     
     end
 
     def destroy
@@ -41,9 +46,8 @@ class User::HospsController < ApplicationController
         redirect_to user_hosps_path
     end
 
+    private
     def hosp_params
         params.require(:hosp).permit(:name, :user_id, :prefecture_id, :body)
-    end
-    
-    
+    end  
 end

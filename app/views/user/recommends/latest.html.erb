@@ -2,11 +2,24 @@
     <div class="container">
         <section class="row">
           <h1 class="col-xs-8 col-xs-offset-4">妊娠おすすめ登録</h1>
+                <% if flash[:success] %>
+                <p class="text-center"><%= flash[:success] %></p>
+                <% end %>
+
+                <% if @recommend.errors.any? %>
+                <div id="error_explanation" class="alert alert-danger">
+                <ul>
+                <% @recommend.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+                <% end %>
+
             <div class="col-xs-2">
             <%= render 'layouts/presidebar' %>
             </div>
+
             <div class='col-xs-10'>
-                <% if user_signed_in? %>
+            <% if user_signed_in? %>
                 <%= form_for @recommend, url: user_preg_comp_path do |recommend| %>
                     <%= recommend.hidden_field :term, {value: 'pregnancy'} %>
                     <div class="col-xs-10 col-xs-offset-1">
