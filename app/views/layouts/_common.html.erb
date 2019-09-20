@@ -1,0 +1,16 @@
+            <div class="sidebar"> 
+                <p>総合TOP</p>
+                <%= link_to 'TOP', root_path %>
+                
+                <p>妊活TOP</p>
+                 <%= link_to "妊活TOP", infer_top_path %>
+
+                <p>妊娠TOP</p>
+                <%= link_to "妊娠TOP", preg_top_path %>
+
+                <p>マイページ</p>
+                <%= link_to "マイページ",user_user_path(current_user.id) %>
+
+                <P>ログアウト</p>
+                <%= link_to "LOGOUT", destroy_user_session_path, class:"hm-link text-center h5", method: :delete %>
+            </div>

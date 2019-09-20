@@ -16,7 +16,7 @@ class User::RecommendsController < ApplicationController
     end
 
     def index 
-        @recommends = Recommend.where(term: 'infertility')
+        @recommends = Recommend.where(term: '不妊')
     end
 
     # 妊娠側 pregnancy
@@ -36,7 +36,7 @@ class User::RecommendsController < ApplicationController
     end
 
     def list
-        @recommends = Recommend.where(term: 'pregnancy')
+        @recommends = Recommend.where(term: '妊娠')
     end
 
     # 両方

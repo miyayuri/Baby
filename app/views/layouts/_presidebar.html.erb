@@ -16,5 +16,6 @@
                 <% if user_signed_in? %>
                 <p>マイページ</p>
                 <%= link_to "マイページ",user_user_path(current_user.id) %>
+                <%= link_to "LOGOUT", destroy_user_session_path, class:"hm-link text-center h5", method: :delete %>
                 <% end %>
             </div>

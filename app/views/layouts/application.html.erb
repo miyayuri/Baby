@@ -15,12 +15,20 @@
           <span class="taitoru">Baby</span></div>
 
         <div class="menu">
+        <% if admin_signed_in? %>
+          <div class="breadcrumb">
+            <li><%= link_to "ユーザ一覧", admin_users_path, class:"hm-link text-center h5" %></li>
+            <li><%= link_to "病院レビュー一覧", admin_hosp_reviews_path, class:"hm-link text-center h5" %></li> 
+            <li><%= link_to "おすすめ投稿一覧", admin_human_summary_path, class:"hm-link text-center h5" %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, class:"hm-link text-center h5", method: :delete %></li>
+        </div>
+
+        <% else %>
          <% if user_signed_in? %>
           <div class="breadcrumb">
             <!--ログインしてる -->
               <li><%= link_to 'TOP', root_path, class:"text-center h5" %></li>
               <li><%= link_to "MY PAGE",user_user_path(current_user.id) %></li>
-              <li><%= link_to "LOGOUT", destroy_user_session_path, class:"hm-link text-center h5", method: :delete %></li>
           </div>
          <% else %>
          <div class="breadcrumb">
@@ -29,6 +37,7 @@
               <li><%= link_to_unless_current "LOGIN", new_user_session_path, class:"hm-link text-center h5" %></li>
               <li><%= link_to_unless_current "SIGN UP", new_user_registration_path, class:"hm-link text-center h5" %></li>
          <% end %>
+        <% end %>
         </div>
       </div>
       </header>

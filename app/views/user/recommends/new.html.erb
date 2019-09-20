@@ -20,7 +20,7 @@
             <div class='col-xs-10'>
             <% if user_signed_in? %>
                 <%= form_for @recommend, url: user_infer_create_path do |recommend| %>
-                    <%= recommend.hidden_field :term, {value: 'infertility'} %>
+                    <%= recommend.hidden_field :term, {value: '不妊'} %>
  
                     <div class="col-xs-10 col-xs-offset-1">
                         <h4 class="col-xs-12">ジャンル</h4>

@@ -5,8 +5,8 @@ class Recommend < ApplicationRecord
         recommend_likes.where(user_id: user.id).exists?
     end
 
-    enum term: {infertility: 0,pregnancy: 1}
-    #０妊活　１妊娠
+    enum term: {不妊: 0,妊娠: 1}
+    #０妊活 １妊娠
 
     validates :user_id, presence: true
     validates :genre, presence: true

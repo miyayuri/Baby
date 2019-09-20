@@ -21,7 +21,7 @@
             <div class='col-xs-10'>
             <% if user_signed_in? %>
                 <%= form_for @recommend, url: user_preg_comp_path do |recommend| %>
-                    <%= recommend.hidden_field :term, {value: 'pregnancy'} %>
+                    <%= recommend.hidden_field :term, {value: '妊娠'} %>
                     <div class="col-xs-10 col-xs-offset-1">
                     <h4 class="col-xs-12">ジャンル</h4>
                         <label><%= recommend.radio_button :genre, "アクティブ" %> アクティブ　</label>

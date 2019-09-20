@@ -4,7 +4,8 @@ class User::HospsController < ApplicationController
     end
 
     def index
-        @hosp = Hosp.all
+        @q= Hosp.includes(:prefecture).ransack(params[:q])
+        @hosps = @q.result(distinct: true)
     end
     
     def show

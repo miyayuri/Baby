@@ -1,0 +1,45 @@
+<div class='body'>
+    <div class='container'>
+        <section class="row">
+            <h2 class="text-center">全てのおすすめ投稿一覧</h2>
+
+
+            <%= link_to "不妊側おすすめ", admin_infer_index_path, class:"btn btn-success" %>
+            <%= link_to "妊娠側おすすめ", admin_preg_list_path, class:"btn btn-success" %>
+
+
+ 
+            <div class='col-xs-12'>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>投稿者ID</th>
+                            <th>ジャンル</th>
+                            <th>タイトル</th>
+                            <th>内容</th>   
+                            <th>区分</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @recommends.each do |recommend| %>
+                        <tr>
+                            <td>
+                             <%= link_to admin_user_path(recommend.user_id) do %>
+                            <%= recommend.user_id %>
+                            <% end %></td>
+                            <td><%= recommend.genre %></td>
+                            <td><%= recommend.title %></td>
+                            <td><%= recommend.body %></td>
+                            <td><%= recommend.term %></td>
+                            <td><%= link_to "詳細を見る", admin_recommend_path(recommend.id), class:"btn btn-success" %>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+ </div>
+
+

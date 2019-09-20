@@ -3,7 +3,7 @@
         <section class="row">
             <div class="col-xs-2">
             <div class="sidebar"> 
-                <% if @recommend.term == 'infertility' %>
+                <% if @recommend.term == '不妊' %>
                     <p>妊活TOP</p>
                     <%= link_to "妊活TOP", infer_top_path %>
                     <br><br>
@@ -55,14 +55,14 @@
                             <i class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color: red;"></i>
                             <%# <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>♡ %>
                             <% end %>
-                            <%= @recommend.recommend_likes.count %> いいね
+                            <%= @recommend.recommend_likes.count %> やってみたい！
                             </li>
                         <% else %>
                             <li><%= link_to user_recommend_recommend_likes_path(@recommend), method: :post do %>
                             <i class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color: black;"></i>
                             <%# <i class="fa fa-heart-o" aria-hidden="true"></i>♡ %>
                             <% end %>
-                            <%= @recommend.recommend_likes.count %> いいね
+                            <%= @recommend.recommend_likes.count %> やってみたい！
                         <% end %>
 
                         <% if @recommend.user.id == current_user.id%>

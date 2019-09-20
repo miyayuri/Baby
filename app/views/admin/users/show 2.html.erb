@@ -3,10 +3,10 @@
     <section class="row">
 
         <div class="col-xs-2">
-            <%= render 'layouts/common' %>    
         </div>
         <div class="col-xs-10">
         <h1 class="col-xs-11 col-xs-offset-1">ユーザー情報</h1>
+            <%= link_to "このユーザを削除", admin_user_path(@user.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に退会させますか？" %>
             <table class="table">
                 <thead>
                     <tr>
@@ -33,8 +33,33 @@
                     </tr>
                 </tbody>
             </table>
-            <%= link_to "編集", edit_user_user_path(@user.id), class:"btn btn-success form-control" %>
+            <div class="col-xs-10 col-xs-offset-1 user-show-block">
+                <h2>レビュー一覧</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>レビュー内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @user.hosp_reviews.each do |review| %>
+                    <tr>
+                        <td></td>
+                        <td>
+                        <%= link_to admin_hosp_path(review.hosp_id) do %>
+                        <%= review.hosp_id %>
+                        <% end %></td>
+                        <td><%= review.body %></td>
+                        <td>
+                        <%= link_to "削除", admin_hosp_review_path(review.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </div>         
         </div>
+
     </section>
 </div>
 </div>
