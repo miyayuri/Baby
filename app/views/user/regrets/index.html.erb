@@ -29,7 +29,7 @@
                 <h4 class="regretpriod">何ヶ月目の出来事</h4>
                 <%= regret.collection_select :period_id, Period.all, :id, :name, {}, placeholder: "選択してください", class: 'form-control h4' %> 
 
-                <h4 class="">内容</h4>
+                <h4 class="">50文字以内でしておけばよかったことを記入してね！</h4>
                 <%= regret.text_area :body ,class:"form-control" %>
 
                 <%= regret.submit "投稿！", class:"form-control btn btn-primary" %>

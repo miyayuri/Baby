@@ -10,6 +10,7 @@
 	        			<th>名前</th>
 		        		<th>都道府県</th>
 			        	<th>内容</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -22,12 +23,13 @@
                         <td><%= @hosp.name %></td>
                         <td><%= @hosp.prefecture.name%></td>
                         <td><%= @hosp.body %></td>
+                        <td><%= link_to "削除する", admin_hosp_path(@hosp.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+</td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="link">
-                    <%= link_to "削除する", admin_hosp_path(@hosp.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
-                </div>
+                
+               
 
                 
                     <div class="user_review">
@@ -35,11 +37,15 @@
                         <div class="review">
                         <% @hosp.hosp_reviews.each do |review| %>
                             <div olspan="3" class="user_info">
-                            <%= link_to "削除", admin_hosp_review_path(review.id),  class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                            <%= link_to admin_user_path(review.user_id) do %>
+                            <%= review.user.id %>
+                            <% end %>
                             </div>
                             <div class="review_post" >
                                 <%= review.body %>
+                            <%= link_to "削除", admin_hosp_review_path(review.id),  class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
                             </div>
+
                         </div>
                         <% end %>
                     </div>

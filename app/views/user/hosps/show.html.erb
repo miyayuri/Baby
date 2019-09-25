@@ -67,7 +67,7 @@
                 </table>
                     
 
-                <div class="link">
+                <div class="">
                     <% if user_signed_in? && current_user.id == @hosp.user.id  %>
                     <%= link_to "編集する",  edit_user_hosp_path ,class:"btn btn-success"%>                      
                     <%= link_to "削除する", user_hosp_path(@hosp.id), class:"btn btn-danger", method: :delete %></div>
@@ -79,8 +79,9 @@
                 <h3 class="review_titile text-center"><b>ユーザーレビュー</b></h3>
                     <div class="review">
                     <% @hosp.hosp_reviews.each do |review| %>
-                        <div olspan="3" class="user_info">
+                        <div class="user_info">
                             <% if user_signed_in? && current_user.id == review.user_id %>
+                            <%= review.user.name %>
                             <%= link_to "編集", edit_user_hosp_hosp_review_path(@hosp.id,review.id), class:"botan1" %>
                             <%= link_to "削除", user_hosp_hosp_review_path(@hosp.id,review.id), method: :delete %>
                             <% end %>

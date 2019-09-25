@@ -11,6 +11,8 @@ class User::RegretsController < ApplicationController
             flash[:success] = " 投稿しました！"
             redirect_back(fallback_location: root_url)
         else
+            @regrets = Regret.all
+            @regret.user_id = current_user.id    
             render :index
         end
     end

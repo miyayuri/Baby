@@ -24,7 +24,6 @@
                         <p class="listbody"><%= recommend.body %></p>
                         <span class="icon glyphicon glyphicon-thumbs-up" aria-hidden="true">
                         <%= recommend.recommend_likes.count %> </span>
-
                     </div>
                     <%= link_to "詳しく", user_recommend_path(recommend.id), class:"btn btn-default form-control" %>
                 </div>

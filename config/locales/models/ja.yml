@@ -3,7 +3,8 @@ ja:
     models:
       recommend: "オススメ"
       hosp: "病院"
-      hosp_review: "レビュ"
+      hosp_review: "レビュ-"
+      regret: "後悔"
     attributes:
       recommend:
         genre: "ジャンル"
@@ -13,4 +14,6 @@ ja:
         name: "病院名"
         body: "内容"     
       hosp_review:
+        body: "内容"
+      regret:
         body: "内容"

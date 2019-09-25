@@ -6,4 +6,5 @@ class Regret < ApplicationRecord
     validates :period_id, presence: true
     validates :user_id, presence: true
 
+    validates :body, length: { maximum: 50 }
 end
