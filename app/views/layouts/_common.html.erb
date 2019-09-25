@@ -8,6 +8,7 @@
                 <p>妊娠TOP</p>
                 <%= link_to "妊娠TOP", preg_top_path %>
 
+                <% if user_signed_in? %>
                 <p>マイページ</p>
                 <%= link_to "マイページ",user_user_path(current_user.id) %>
                 <p>期間中やってみたい！</p>                   
@@ -15,4 +16,5 @@
 
                 <P>ログアウト</p>
                 <%= link_to "LOGOUT", destroy_user_session_path, class:"text-center", method: :delete %>
+                <% end %>
             </div>

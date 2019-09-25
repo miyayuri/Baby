@@ -32,20 +32,14 @@
                                <% end %>
                                 <%= @recommend.recommend_likes.count %> やってみたい！
                             <% end %>
-
+                            
+                            <% if @recommend.user.id == current_user.id%>
+                                <%= link_to "編集・削除",  edit_user_recommend_path ,class:"btn  btn-default form-control"%>
+                            <% end %>
                         <% end %>
                 </div>
-                        <% if @recommend.user.id == current_user.id%>
-                            <%= link_to "編集・削除",  edit_user_recommend_path ,class:"btn  btn-default form-control"%>
-                        <% end %>
+ 
             </div>
-
-
-
-
-
-
-
 
 
         </section>
