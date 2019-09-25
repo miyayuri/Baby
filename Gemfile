@@ -72,3 +72,7 @@ gem 'enum_help'
 gem 'rails-i18n'
 gem 'ransack'
 gem 'pry-byebug'
+
+group  :development do
+	gem 'mysql2'
+end 

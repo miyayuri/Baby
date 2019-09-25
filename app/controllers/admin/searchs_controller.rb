@@ -1,4 +1,5 @@
 class Admin::SearchsController < ApplicationController
+    before_action :authenticate_admin!
     def index 
         q = params[:q]
         @hosps    = Hosp.ransack(body_cont: q).result

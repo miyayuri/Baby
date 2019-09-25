@@ -8,7 +8,7 @@
 
 # Adminの初期設定
 Admin.find_or_create_by(id: 1) do |admin|
-    admin.email = 'yurikomiyamoto819@gmail.com '
+    admin.email = 'yurikomiyamoto819@gmail.com'
     admin.password = '08190819'
   end
 

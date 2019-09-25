@@ -1,4 +1,5 @@
 class Admin::RecommendsController < ApplicationController
+    before_action :authenticate_admin!
     def index
         @recommends = Recommend.where(term: '不妊')
     end

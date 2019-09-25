@@ -1,4 +1,5 @@
 class Admin::HospsController < ApplicationController
+    before_action :authenticate_admin!
     def index
         @q= Hosp.includes(:prefecture).ransack(params[:q])
         @hosps = @q.result(distinct: true)
