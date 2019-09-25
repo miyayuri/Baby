@@ -26,6 +26,7 @@ namespace :admin do
   resources :users ,only: [:show, :index, :destroy]
   resources :hosps, only: [:index, :show, :destroy] 
   resources :hosp_reviews, only: [:index, :destroy]
+  resources :searchs, only: [:index]
   get 'recommends/infertility' => 'recommends#index', as:"infer_index"
   get 'recommends/pregnancy' => 'recommends#list', as:"preg_list"
   get 'recommends/human' => 'recommends#summary', as:"human_summary"

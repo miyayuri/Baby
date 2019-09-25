@@ -10,4 +10,16 @@ class ApplicationController < ActionController::Base
       ]
     )
   end
+
+
+
+  private
+    def after_sign_in_path_for(resourse)
+      case resourse
+      when User
+        root_path
+      when Admin
+        admin_searchs_path
+      end
+    end
 end

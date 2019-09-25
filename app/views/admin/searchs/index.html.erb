@@ -1,0 +1,20 @@
+<div class='body'>
+    <div class='container'>
+        <section class="row">
+
+            <div class="kensaku">
+                <%= form_tag admin_searchs_path, method: :get do %>
+                <%= text_field_tag :q, nil %>
+                <%= submit_tag %>
+                <% end %>
+            </div>
+
+            <div class="">
+            <% @result&.each do |result| %>
+            <%= result.body %>
+            <% end %>
+            </div>
+
+        </section>
+    </div>
+</div>

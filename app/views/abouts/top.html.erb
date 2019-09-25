@@ -1,7 +1,75 @@
 <div class='body'>
     <div class='container'>
-        <div class='row'>
-        <%= link_to "会員登録", new_user_registration_path %>
-        <%= link_to "妊娠TOP", preg_top_path %>
-        <%= link_to "妊活TOP", infer_top_path %>
+        <section class='row '>
+        
+            <div id="container">
+                <div id="theTarget">
+                    <div class="image3"></div>
+                    <div class="image2"></div>
+                    <div class="image1"></div>
+                </div>
+            </div>
 
+
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="meinname text-center">
+                    <h4><b>『C'est la vie』</b></h4><br>
+                    <p class="meintext">C'est la vie・セ ラ ヴィー<br>
+                    「これが人生」「人生そういうものさ」そんな意味を持つフランスの言葉。
+                    すべてを受け入れる懐の深さを感じられることわざです。<br>
+                    辛い気持ちの人や、困っている人がいたら手助けしよう<br>
+                    何か悲しいことが起きても、前を見て進もう<br>
+                    そんな前向きな気持ちになって欲しいという想いを込めてサイト名にしました。
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="top text-center">
+                    <p>
+                    皆様が持っている、妊娠中や妊活中の<br>
+                    良い情報を投稿、共有し、
+                    不安なときや、悲しいとき<br>
+                    そっと誰かに助けてもらえる。
+                    そっと誰かの役に立てる。<br>
+                    優しい心を思い出せる、そんな情報交換サイト<br>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="col-xs-4 ">
+                <div class="mainlink">
+                    <p class="linktext text-center">
+                    妊娠期間のおすすめの趣味や<br>
+                    妊娠期間にやっておけばよかったことなど<br>
+                    見た人の役にたつ情報を閲覧、投稿できます！<br></p>
+                    <h4 class="text-center"><%= link_to "赤ちゃん授かった", preg_top_path %></b></h4>
+                </div>
+            </div>
+
+            <div class="col-xs-4 ">
+                <div class="link">
+                    <p class="linktext text-center">
+                    会員登録をすると色々な投稿ができるように！<br>
+                    登録してもらった情報は管理者だけがわかります。<br>
+                    登録情報が、投稿の際に出ることないので安心して<br>
+                    自分の役にたった情報を投稿してください！<br>
+                    <h4 class="text-center"><%= link_to "会員登録をする", new_user_registration_path %></h4></b>
+                </div>
+            </div>
+
+            <div class="col-xs-4 ">
+                <div class="mainlink">
+                    <p class="linktext text-center">
+                    これから赤ちゃんを授かりたい人や<br>
+                    今まさに頑張っている人と情報を交換しましょう<br>
+                    見た人の役にたつ情報を閲覧、投稿できます！<br></p>
+                    <h4 class="text-center"><%= link_to "赤ちゃんを待っている", infer_top_path %></b></h4>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 <div class='body'>
     <div class="container">
-        <section class="row">
+        <section class="row row-eq-height">
         <h2 class="title text-center">おすすめの病院登録</h2>
             <div class="text-center">
                 <% if flash[:success] %>
@@ -21,6 +21,7 @@
                   <%= render 'layouts/infsidebar' %>
                 </div>
             </div>
+            
             <div class='col-xs-10'>
             <% if user_signed_in? %>
                 <%= form_for @hosp, url: user_hosps_path do |hosp| %>

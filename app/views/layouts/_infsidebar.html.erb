@@ -1,6 +1,6 @@
                 <div class="sidebar"> 
-                    <%# <p>妊活TOP</p> %>
-                    <%= link_to "妊活TOP", infer_top_path %><br>
+                    <p>赤ちゃんを待っている</p>
+                    <%= link_to "TOP", infer_top_path %><br>
                     <br><br>
                     <p>わたしのオススメ医院</p>
                     <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
@@ -11,13 +11,13 @@
                     <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
                     <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
                     <br><br>
-                    <p>様々な生き方</p>
+                    <%# <p>様々な生き方</p>
                     <%= link_to "", "#"%><br> 
-                    <%= link_to "", "#"%><br> 
-                    <br><br>
+                    <%# <%= link_to "", "#"%><br>  
+                    <%# <br><br>  %>
                     <% if user_signed_in? %>
                     <p>マイページ</p>
-                    <%= link_to "マイページ",user_user_path(current_user.id) %>
-                    <%= link_to "LOGOUT", destroy_user_session_path, class:"hm-link text-center h5", method: :delete %>
+                    <%= link_to "マイページ",user_user_path(current_user.id) %><br>
+                    <%= link_to "LOGOUT", destroy_user_session_path, class:"text-center", method: :delete %>
                     <% end %>
                 </div>

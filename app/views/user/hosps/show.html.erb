@@ -1,11 +1,14 @@
 <%# 病院の詳細だよ〜〜 %>
 <div class='body'>
     <div class='container'>
-        <div class='row'>
+        <div class='row row-eq-height'>
             <h2 class="title text-center">おすすめ病院 詳細</h2>
             <div class="col-xs-2">
-              <%= render 'layouts/infsidebar' %>
+                <div class="sidebar">   
+                    <%= render 'layouts/infsidebar' %>
+                </div>
             </div>
+
             <div class='col-xs-10'>
 
                     <% if flash[:success] %>

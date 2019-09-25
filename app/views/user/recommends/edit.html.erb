@@ -1,85 +1,50 @@
 <div class="body">
     <div class="container">
-        <section class="row">
+        <section class="row row-eq-height">
+        <h2 class="col-xs-7 col-xs-offset-5">おすすめ投稿 編集</h2>
+
             <div class="col-xs-2">
                 <div class="sidebar"> 
-                <% if @recommend.term == 'infertility' %>
-                    <p>妊活TOP</p>
-                    <%= link_to "妊活TOP", infer_top_path %><br>
-                    <br><br>
-                    <p>わたしのオススメ医院</p>
-                    <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
-                    <%= link_to "医院を一覧で見る", user_hosps_path %><br>
-                    <br><br>
-                    <p>期間中の過ごし方</p>
-                    <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
-                    <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
-                    <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-                    <br><br>
-                    <p>様々な生き方</p>
-                    <%= link_to "", "#"%><br> 
-                    <%= link_to "", "#"%><br> 
-                <% else%>
-                    <p>妊娠TOP</p>
-                    <%= link_to "妊娠TOP", preg_top_path %>
-                    <br><br>
-                    <p>私のやっておけば良かった！</p>
-                    <%= link_to "一言集！", user_regrets_path %>
-                    <br><br>
-                    <p>国の支援制度</p>
-                    <%= link_to "国の支援制度", "#" %>
-                    <br><br>
-                    <p>期間中の過ごし方</p>
-                    <%= link_to "オススメの過ごし方を登録", user_preg_latest_path %><br>
-                    <%= link_to "過ごし方の一覧", user_preg_list_path %><br>
-                    <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-                <% end %>
+                    <%= render 'layouts/term' %>
                 </div>
             </div>
+
             <div class='col-xs-10'>
-                <% if flash[:success] %>
-                <p class="text-center"><%= flash[:success] %></p>
-                <% end %>
 
-                <% if @recommend.errors.any? %>
-                <div id="error_explanation" class="alert alert-danger">
-                <ul>
-                <% @recommend.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-                <% end %>
-                <% end %>
-                <div class="style-1 rounded has-shadow-1">
-                    <h2 class="">おすすめ投稿 編集</h2>
+                    <% if flash[:success] %>
+                    <p class="text-center"><%= flash[:success] %></p>
+                    <% end %>
 
-                        <%= form_for @recommend, url:user_recommend_path(@recommend) do |recommend| %>
-                        <%= recommend.hidden_field :term %>
-                        
-                          <div class="form-group has-icon">
-                            <h4 class="col-xs-12">ジャンル</h4>
-                            <div class="col-xs-10 col-xs-offset-1">
-                                <label><%= recommend.radio_button :genre, "アクティブ" %> アクティブ　</label>
-                                <label><%= recommend.radio_button :genre, "リラックス" %> リラックス </label>
-                            </div>
-                        　</div>     
+                    <% if @recommend.errors.any? %>
+                    <div id="error_explanation" class="alert alert-danger">
+                    <ul>
+                    <% @recommend.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                    <% end %>
 
-                          <div class="form-group has-icon">
-                            <label class="control-label" for="inputftel">タイトル</label>
-                            <%= recommend.text_field :title, autofocus: true, class:"form-control", id:"inputtitle", placeholder:"タイトル"%>
-                          </div>
+                <div class="recommendbox">
+                    <%= form_for @recommend, url:user_recommend_path(@recommend) do |recommend| %>
+                    <%= recommend.hidden_field :term %>
+                    
 
-                          <div class="form-group has-icon">
-                            <label class="control-label" for="inputfemail">内容</label>
-                            <%= recommend.text_area :body, autofocus: true, class:"form-control", id:"inputemail", placeholder:""%>
-                          </div>
+                    <h4 class="">ジャンル</h4>
+                    <%= recommend.radio_button :genre, "アクティブ" %> アクティブ </label>
+                    <%= recommend.radio_button :genre, "リラックス" %> リラックス </label>
 
-                          <div class="form-group has-icon">
-                          <%= recommend.submit "登録内容を変更する", class:"form-control btn btn-primary" %></div>
-                          <div class="form-group has-icon">
-                          <%= link_to "削除する", user_recommend_path(@recommend.id), class:"form-control btn btn-danger", method: :delete %></div>
-                        <% end %>
+                    <h4 class="">タイトル</h4>
+                    <%= recommend.text_field :title %>
+
+                    <h4 class="">内容</h4>
+                    <%= recommend.text_area :body, class:"form-control" %>
+
+                    <div class="recommendlink">
+                    <%= recommend.submit "登録内容を変更する", class:"btn btn-default" %>
+                    <%= link_to "登録内容を削除する", user_recommend_path(@recommend.id), class:"btn btn-danger", method: :delete %>
+                    <% end %>
+                    </div>
                 </div>
             </div>
-        </div>,
+        <section>
     </div>
-</section>
-</body>
+</div>
