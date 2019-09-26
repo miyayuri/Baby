@@ -1,0 +1,55 @@
+<div class='body'>
+    <div class='container'>
+        <div class='row'>
+            <h2 class="title text-center">おすすめ病院 詳細</h2>
+            <div class='col-xs-12'>
+                <table class="table table-striped">
+                    <thead>
+        			<tr>
+                        <th>投稿者ID</th>
+	        			<th>名前</th>
+		        		<th>都道府県</th>
+			        	<th>内容</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                        <%= @hosp.user_id %>
+                        <%= link_to admin_user_path(@hosp.user_id) do %>
+                        <% end %>
+                        </td>
+                        <td><%= @hosp.name %></td>
+                        <td><%= @hosp.prefecture.name%></td>
+                        <td><%= @hosp.body %></td>
+                        <td><%= link_to "削除する", admin_hosp_path(@hosp.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+</td>
+                    </tr>
+                    </tbody>
+                </table>
+                
+               
+
+                
+                    <div class="user_review">
+                        <h3 class="review_titile text-center"><b>ユーザーレビュー</b></h3>
+                        <div class="review">
+                        <% @hosp.hosp_reviews.each do |review| %>
+                            <div olspan="3" class="user_info">
+                            <%= link_to admin_user_path(review.user_id) do %>
+                            <%= review.user.id %>
+                            <% end %>
+                            </div>
+                            <div class="review_post" >
+                                <%= review.body %>
+                            <%= link_to "削除", admin_hosp_review_path(review.id),  class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                            </div>
+
+                        </div>
+                        <% end %>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

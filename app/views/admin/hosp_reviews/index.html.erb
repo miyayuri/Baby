@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+            <div class="col-xs-10 col-xs-offset-1 user-show-block">
+                <h2>レビュー一覧</h2>
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th>投稿者ID</th>
+                        <th>病院ID</th>
+                        <th>レビュー内容</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @reviews.each do |review| %>
+                    <tr>
+                        <td>
+                        <%= link_to admin_user_path(review.user_id) do %>
+                        <%= review.user_id %>
+                        <% end %></td>
+                        <td>
+                        <%= link_to admin_hosp_path(review.hosp_id) do %>
+                        <%= review.hosp_id %>
+                        <% end %></td>
+                        <td><%= review.body %></td>
+                        <td>
+                        <%= link_to "削除", admin_hosp_review_path(review.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>         

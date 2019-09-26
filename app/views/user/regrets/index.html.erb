@@ -1,47 +1,62 @@
 <div class='body'>
 <div class="container">
-    <section class="row">
-     <h2 class="title text-center">私のやっておけば良かった！</h2>
+    <section class="row row-eq-height">
+     <h3 class="ol-xs-6 col-xs-offset-5">私のやっておけば良かった一言！</h3>
+
+        <% if flash[:success] %>
+            <p><%= flash[:success] %></p>
+        <% end %>
+
+        <% if @regret.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+        <ul>
+        <% @regret.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        <% end %>
+
         <div class="col-xs-2">
-            <div class="sidebar"> 
-            <p>妊娠TOP</p>
-            <%= link_to "妊娠TOP", preg_top_path %>
-            <br><br>
-            <p>私のやっておけば良かった！</p>
-            <%= link_to "一言集！", user_regrets_path %>
-            <br><br>
-            <p>国の支援制度</p>
-            <%= link_to "国の支援制度", "#" %>
-            <br><br>
-            <p>期間中の過ごし方</p>
-            <%= link_to "オススメの過ごし方を登録", user_preg_latest_path %><br>
-            <%= link_to "過ごし方の一覧", user_preg_list_path %><br>
-            <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
+            <div class="sidebar">
+                <%= render 'layouts/presidebar' %>
             </div>
         </div>
+        
         <div class='col-xs-10'>
-            <div class="">
+        <% if user_signed_in? %>
+
             <%= form_for @regret, url: user_regrets_path do |regret| %>
-                <h4 class="col-xs-12">何ヶ月目の出来事</h4>
+            <div class="col-xs-6 col-xs-offset-3">
+                <h4 class="regretpriod">何ヶ月目の出来事</h4>
                 <%= regret.collection_select :period_id, Period.all, :id, :name, {}, placeholder: "選択してください", class: 'form-control h4' %> 
 
-                <h4 class="col-xs-12">内容</h4>
-                <%= regret.text_field :body ,class:"form-control" %>
+                <h4 class="">50文字以内でしておけばよかったことを記入してね！</h4>
+                <%= regret.text_area :body ,class:"form-control" %>
 
-                <%= regret.submit "登録する", class:"form-control btn btn-primary" %>
+                <%= regret.submit "投稿！", class:"form-control btn btn-primary" %>
             <% end %>
             </div>
 
-            <div class="">
-            <% @regrets.each do |regret|  %>
-                <%= regret.body %>
-                <%= regret.period.name %>
-                <% if user_signed_in? && current_user.id == regret.user_id %>
-                    <%= link_to "削除", user_regret_path(regret.id), method: :delete %>
-                <%end %>
+            <% @regrets.each do |regret|  %>  
+                <div class='col-xs-6 col-xs-offset-3'>      
+                <div class="regretbox">
+                    <p class="text-center"><%= regret.period.name %>のこと</p>
+                    <p class="text-center"><%= regret.body %></p>
+                    <p class="text-center"><% if user_signed_in? && current_user.id == regret.user_id %>
+                        <%= link_to "削除", user_regret_path(regret.id), method: :delete %>
+                    <%end %>
+                </div>
+                </div>
             <% end %>
+
+        <% else %>
+
+           <div class="text-center">
+                <P>会員登録すると、自分のオススメを登録できるよ！</p>
+                <%= link_to_unless_current "ログインする", new_user_session_path, class:"hm-link text-center h5" %>
+                <%= link_to_unless_current "会員登録する", new_user_registration_path, class:"hm-link text-center h5" %>
             </div>
 
+        <% end %>
         </div>
     </section>
 </div>

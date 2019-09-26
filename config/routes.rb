@@ -18,9 +18,21 @@ root 'abouts#top'
 get 'infertility/top' => 'infertility#top', as:"infer_top" 
 get 'pregnancy/top' => 'pregnancy#top',as:"preg_top" 
 
+
+resources :admins, only:[:show, :edit, :update] 
+
 # 名前空間上のroute
 namespace :admin do
-  resources :users
+  resources :users ,only: [:show, :index, :destroy]
+  resources :hosps, only: [:index, :show, :destroy] 
+  resources :hosp_reviews, only: [:index, :destroy]
+  resources :searchs, only: [:index]
+  get 'recommends/infertility' => 'recommends#index', as:"infer_index"
+  get 'recommends/pregnancy' => 'recommends#list', as:"preg_list"
+  get 'recommends/human' => 'recommends#summary', as:"human_summary"
+
+  resources :recommends, only: [:show, :destroy] 
+  resources :regrets, only: [:index, :create, :destroy]
 end
 
 namespace :user do
@@ -42,7 +54,6 @@ namespace :user do
     end
   resources :recommend_likes, only:[:index]
   resources :regrets, only: [:index, :create, :destroy]
-
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

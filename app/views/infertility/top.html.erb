@@ -1,29 +1,36 @@
 <div class='body'>
     <div class='container'>
         <div class='row'>
-            <h2 class="title text-center">妊活TOP</h2>
+            <h2 class="title text-center">赤ちゃんを待っているあなたへ</h2>
         
             <div class="col-xs-2">
-                <div class="sidebar"> 
-                <p>妊活TOP</p>
-                <%= link_to "妊活TOP", infer_top_path %><br>
-                <br><br>
-                <p>わたしのオススメ医院</p>
-                <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
-                <%= link_to "医院を一覧で見る", user_hosps_path %><br>
-                <br><br>
-                <p>期間中の過ごし方</p>
-                <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
-                <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
-                <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-
-                <br><br>
-                <p>様々な生き方</p>
-                <%= link_to "", "#"%><br> 
-                <%= link_to "", "#"%><br> 
-                </div>
+                <div class="sidebar">
+                    <%= render 'layouts/infsidebar' %> 
+                </div>              
             </div>
+
             <div class='col-xs-10'>
+
+                <div id="container">
+                    <div id="Point">
+                        <div class="image17"></div>
+                        <div class="image14"></div>
+                        <div class="image13"></div>
+                    </div>
+                </div>
+
+                <div class="point">
+                    <div class="point-title"><b>約束ごと</div></b>
+                        <p class="text-center">決して他人を傷つけるようなことは、書き込まないこと。<br>
+                        投稿するときは、会員登録をしていただきます。<br>
+                        酷い書き込みをされた場合は、<b>アカウントを強制削除</b>させて頂くと場合もございます。<br>
+                        あまりにも酷い書き込みは、<b>法的手段</b>を取る可能性もございます。<br>
+                        自分の役にたった情報を投稿してください！<br>
+                        人の役に立つのはきっと、優しい気持ちになれます！<br>
+                        <b>C'est la vie</b></p>
+                </div>
+
+                
             </div>
         </div>
     </div>

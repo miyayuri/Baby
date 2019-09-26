@@ -1,0 +1,39 @@
+                    <div class="sidebar"
+                    <% if @recommend.term == '不妊' %>
+                        <p>妊活TOP</p>
+                        <%= link_to "妊活TOP", infer_top_path %>
+                        <br><br>
+                        <p>わたしのオススメ医院</p>
+                        <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
+                        <%= link_to "医院を一覧で見る", user_hosps_path %>
+                        <br><br>
+                        <p>期間中の過ごし方</p>
+                        <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
+                        <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
+                        <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %>
+                        <br><br>
+                        <%# <p>様々な生き方</p>
+                        <%= link_to "", "#"%><br> 
+                        <%# <%= link_to "", "#"%><br>  
+                    <% else%>
+                        <p>妊娠TOP</p>
+                        <%= link_to "妊娠TOP", preg_top_path %>
+                        <br><br>
+                        <p>私のやっておけば良かった！</p>
+                        <%= link_to "一言集！", user_regrets_path %>
+                        <%# <p>国の支援制度</p>
+                        <%= link_to "国の支援制度", "#" %> 
+                        <br><br>
+                        <p>期間中の過ごし方</p>
+                        <%= link_to "オススメの過ごし方を登録", user_preg_latest_path %><br>
+                        <%= link_to "過ごし方の一覧", user_preg_list_path %><br>
+                        <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
+                    <% end %>
+
+                        <% if user_signed_in? %>
+                        <br><br>
+                        <p>マイページ</p>
+                        <%= link_to "マイページ",user_user_path(current_user.id) %><br>
+                        <%= link_to "LOGOUT", destroy_user_session_path, class:"text-center", method: :delete %>
+                        <% end %>
+                    </div>

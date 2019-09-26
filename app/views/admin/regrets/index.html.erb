@@ -1,0 +1,36 @@
+<div class='body'>
+    <div class="container">
+        <section class="row">
+            <h2 class="title text-center">Regret投稿一覧</h2>
+                <div class='col-xs-12'>
+                    <h2>後悔投稿一覧</h2>
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>投稿者ID</th>
+                            <%# <th>投稿者名</th> %>
+                            <th>内容</th>
+                            <th>時期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        <% @regrets.each do |regret|  %>
+                        <tr>
+                            <td>
+                            <%= link_to admin_user_path(regret.user_id) do %>
+                            <%= regret.user.id%>
+                            <%end %></td>
+                            <%# <td><%= regret.user.name %></td> %>
+                            <td><%= regret.body %></td>
+                            <td><%= regret.period.name %></td>
+                            <td>
+                            <%= link_to "削除", admin_regret_path(regret.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                    </table>
+                </div>
+        </section>
+    </div>
+</div>

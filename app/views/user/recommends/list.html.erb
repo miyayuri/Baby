@@ -1,46 +1,34 @@
 <div class='body'>
     <div class="container">
-        <section class="row">
+        <section class="row row-eq-height">
+            <h2 class="col-xs-6 col-xs-offset-6">おすすめ一覧</h2>
+
+                <% if flash[:success] %>
+                <p class="text-center"><%= flash[:success] %></p>
+                <% end %>
+
             <div class="col-xs-2">
-                <div class="sidebar"> 
-                <p>妊娠TOP</p>
-                <%= link_to "妊娠TOP", preg_top_path %>
-                <br><br>
-                <p>私のやっておけば良かった！</p>
-                <%= link_to "一言集！", user_regrets_path %>
-                <br><br>
-                <p>国の支援制度</p>
-                <%= link_to "国の支援制度", "#" %>
-                <br><br>
-                <p>期間中の過ごし方</p>
-                <%= link_to "オススメの過ごし方を登録", user_preg_latest_path %><br>
-                <%= link_to "過ごし方の一覧", user_preg_list_path %><br>
-                <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %>
+                <div class="sidebar">
+                    <%= render 'layouts/presidebar' %>
                 </div>
             </div>
+
             <div class='col-xs-10'>
-            <h1 class="col-xs-10 col-xs-offset-2">妊娠おすすめ一覧</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ジャンル</th>
-                        <th>Title</th>
-                        <th>bosy</th>
-                        <th></th>
-                        </tr>
-                </thead>
-                <tbody>
-                    <% @recommends.each do |recommend| %>
-                    <tr>
-                        <td><%= recommend.genre %></td>
-                        <td><%= recommend.title %></td>
-                        <td><%= recommend.body %></td>
-                        <td><%= link_to "詳細を見る", user_recommend_path(recommend.id), class:"btn btn-success" %>
-                    </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
+
+                <% @recommends.each do |recommend| %>
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div class="recomendlist clearfix">
+                        <span class="listgenre"><%= recommend.genre %></span>
+                        <label class="listtitle">title：<%= recommend.title %></label><br>
+                        <p class="listbody"><%= recommend.body %></p>
+                        <span class="icon glyphicon glyphicon-thumbs-up" aria-hidden="true">
+                        <%= recommend.recommend_likes.count %> </span>
+
+                    </div>
+                    <%= link_to "詳しく", user_recommend_path(recommend.id), class:"btn btn-default form-control" %>
+                </div>
+                <% end %>
+            </div>
         </section>
     </div>
  </div>

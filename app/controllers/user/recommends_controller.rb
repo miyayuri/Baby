@@ -1,9 +1,5 @@
 class User::RecommendsController < ApplicationController
     # 不妊側 infertility
-    def index 
-        @recommends = Recommend.where(term: 'infertility')
-    end
-
     def new
         @recommend = Recommend.new
     end
@@ -11,8 +7,16 @@ class User::RecommendsController < ApplicationController
     def create
         @recommend = Recommend.new(recommend_params)
         @recommend.user_id = current_user.id
-        @recommend.save
-        redirect_to user_infer_index_path
+        if  @recommend.save
+            flash[:success] = " 投稿しました！"
+            redirect_to user_infer_index_path
+        else
+            render :new
+        end
+    end
+
+    def index 
+        @recommends = Recommend.where(term: '不妊')
     end
 
     # 妊娠側 pregnancy
@@ -23,34 +27,40 @@ class User::RecommendsController < ApplicationController
     def complet
         @recommend = Recommend.new(recommend_params)
         @recommend.user_id = current_user.id
-        @recommend.save
-        redirect_to user_preg_list_path
+        if  @recommend.save
+            flash[:success] = " 投稿しました！"
+            redirect_to user_preg_list_path
+        else
+            render :latest
+        end
     end
 
     def list
-        @recommends = Recommend.where(term: 'pregnancy')
+        @recommends = Recommend.where(term: '妊娠')
     end
 
-
     # 両方
-
     def show
         @recommend = Recommend.find(params[:id])
     end
 
     def edit
         @recommend = Recommend.find(params[:id])
-  
+        if @recommend.user.id != current_user.id
+            redirect_to user_recommend_path(@recommend)
+            end
     end
 
     def update
         @recommend = Recommend.find(params[:id])
-        if @recommend.update(recommend_params)
-            redirect_to user_recommend_path(@recommend)
-        else 
+        if  @recommend.update(recommend_params)
+            flash[:success] = " 変更しました！"
+            rredirect_to user_recommend_path(@recommend)
+        else
             render :edit
-        end            
+        end
     end
+    
     def destroy
         @recommend = Recommend.find(params[:id])
         @recommend.destroy

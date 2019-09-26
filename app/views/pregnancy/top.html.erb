@@ -1,25 +1,37 @@
 <div class='body'>
     <div class="container">
         <section class="row">
-            <h2 class="title text-center">妊しんTOP</h2>
+            <h2 class="title text-center">赤ちゃんがいるあなたへ</h2>
+
             <div class="col-xs-2">
-                <div class="sidebar"> 
-                <p>妊娠TOP</p>
-                <%= link_to "妊娠TOP", preg_top_path %>
-                <br><br>
-                <p>私のやっておけば良かった！</p>
-                <%= link_to "一言集！", user_regrets_path %>
-                <br><br>
-                <p>国の支援制度</p>
-                <%= link_to "国の支援制度", "#" %>
-                <br><br>
-                <p>期間中の過ごし方</p>
-                <%= link_to "オススメの過ごし方を登録", user_preg_latest_path %><br>
-                <%= link_to "過ごし方の一覧", user_preg_list_path %><br>
-                <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
+                <div class="sidebar">
+                    <%= render 'layouts/presidebar' %>
                 </div>
             </div>
+
             <div class='col-xs-10'>
+            
+                <div id="container">
+                    <div id="Target">
+                        <div class="image11"></div>
+                        <div class="image7"></div>
+                        <div class="image9"></div>
+                    </div>
+                </div>
+
+                <div class="point">
+                    <div class="point-title"><b>約束ごと</div></b>
+                        <p class="text-center">決して他人を傷つけるようなことは、書き込まないこと。<br>
+                        投稿するときは、会員登録をしていただきます。<br>
+                        酷い書き込みをされた場合は、<b>アカウントを強制削除</b>させて頂くと場合もございます。<br>
+                        あまりにも酷い書き込みは、<b>法的手段</b>を取る可能性もございます。
+                        自分の役にたったことを投稿してください！<br>
+                        人の役に立つと優しい気持ちになれます！<br>
+                        <b>C'est la vie</b></p>
+                </div>
+
+
+
             </div>
         </section>
     </div>

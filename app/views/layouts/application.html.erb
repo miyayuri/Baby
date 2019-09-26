@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Baby</title>
+    <title>C'est la vie</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+    
   </head>
   <body>
     <header class="header">
-        <nav class="nav navbar-nav navbar-left" >
-          <span class="taitoru">Baby</span></nav>
+        <div class="taitoru">
+          <span class="taitoru">C'est la vie</span></div>
 
-        <nav class="nav navbar-nav navbar-right" >
+        <div class="menu">
+        <% if admin_signed_in? %>
+
+
+
+
+          <div class="breadcrumb">
+            <li><%= link_to "SEARCH", admin_searchs_path, class:"hm-link text-center h5" %>
+            <li><%= link_to "USER", admin_users_path, class:"hm-link text-center h5" %></li>
+            <li><%= link_to "REVIEW", admin_hosp_reviews_path, class:"hm-link text-center h5" %></li> 
+            <li><%= link_to "REGRET", admin_regrets_path, class:"hm-link text-center h5" %></li>            
+            <li><%= link_to "RECOMMEND", admin_human_summary_path, class:"hm-link text-center h5" %></li>
+            <li><%= link_to "LOGOUT", destroy_admin_session_path, class:"hm-link text-center h5", method: :delete %></li>
+        </div>
+
+        <% else %>
          <% if user_signed_in? %>
-          <ol class="breadcrumb">
+          <div class="breadcrumb">
             <!--ログインしてる -->
               <li><%= link_to 'TOP', root_path, class:"text-center h5" %></li>
-              <li><%= link_to "LOGOUT", destroy_user_session_path, class:"hm-link text-center h5", method: :delete %></li>
-          </ol>
+              <li><%= link_to "MY PAGE",user_user_path(current_user.id) %></li>
+          </div>
          <% else %>
-         <ol class="breadcrumb">
+         <div class="breadcrumb">
             <!--  ログインしてない -->
+              <li><%= link_to 'TOP', root_path, class:"hm-link text-center h5" %>
               <li><%= link_to_unless_current "LOGIN", new_user_session_path, class:"hm-link text-center h5" %></li>
               <li><%= link_to_unless_current "SIGN UP", new_user_registration_path, class:"hm-link text-center h5" %></li>
-              <li><%= link_to 'TOP', root_path, class:"hm-link text-center h5" %>
          <% end %>
-        </nav>
+        <% end %>
+        </div>
       </div>
       </header>
     <%= yield %>
+    <footer class="footer">
   </body>
 </html>

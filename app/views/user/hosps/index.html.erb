@@ -1,43 +1,49 @@
 <div class='body'>
     <div class='container'>
-        <section class="row">
+        <section class="row row-eq-height">
         <h2 class="title text-center">おすすめ病院一覧</h2>
+        
+            <% if flash[:success] %>
+            <p><%= flash[:success] %></p>
+            <% end %>
+
             <div class="col-xs-2">
-                <div class="sidebar"> 
-                    <%# <p>妊活TOP</p> %>
-                    <%= link_to "妊活TOP", infer_top_path %><br>
-                    <br><br>
-                    <p>わたしのオススメ医院</p>
-                    <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
-                    <%= link_to "医院を一覧で見る", user_hosps_path %><br>
-                    <br><br>
-                    <p>期間中の過ごし方</p>
-                    <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
-                    <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
-                    <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-                    <br><br>
-                    <p>様々な生き方</p>
-                    <%= link_to "", "#"%><br> 
-                    <%= link_to "", "#"%><br> 
-                </div>
+            <%= render 'layouts/infsidebar' %>
             </div>
             <div class='col-xs-10'>
+                      <!-- 検索窓をつける -->
+                        <div class="kensaku">
+                            <%= search_form_for @q, url: user_hosps_path do |f| %>
+
+                            <div class="head-form">
+                            <%= f.search_field :name_cont, placeholder: '病院名', class:"form-control" %>
+                            </div>
+                            <div class="head-form">
+                            <%= f.search_field :prefecture_name_cont, placeholder: '都道府県', class:"form-control" %>                           
+                            </div>
+                            <div class="head-form">
+                            <%= f.submit "検索", class:"btn btn-default" %>
+                            </div>
+                            <% end %>
+                        </div>
+
                 <table class="table table-striped">
+                
                     <thead>
                         <tr>
                             <th>名前</th>
                             <th>都道府県</th>
                             <th>内容</th>
-                            <th>いいね数</th>
+                            <th>オススメ数</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <% @hosp.each do |hosp| %>
+                    <% @hosps.each do |hosp| %>
                         <tr>
                             <td><%= hosp.name %></td>
                             <td><%= hosp.prefecture.name %></td>
                             <td><%= hosp.body %></td>
-                            <td><%= hosp.hosp_likes.count %> 良かったよ！
+                            <td><%= hosp.hosp_likes.count %> オススメ
                             <td><%= link_to "詳細を見る", user_hosp_path(hosp.id), class:"btn btn-success" %>
                         </tr>
                     <% end %>

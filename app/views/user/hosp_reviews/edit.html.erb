@@ -1,34 +1,37 @@
 <div class="body">
     <div class="container">
-        <section class="row">
+        <section class="row row-eq-height">
             <div class="col-xs-2">
                 <div class="sidebar"> 
-                    <%# <p>妊活TOP</p> %>
-                    <%= link_to "妊活TOP", infer_top_path %><br>
-                    <br><br>
-                    <p>わたしのオススメ医院</p>
-                    <%= link_to "オススメ医院を登録", new_user_hosp_path %><br>
-                    <%= link_to "医院を一覧で見る", user_hosps_path %><br>
-                    <br><br>
-                    <p>期間中の過ごし方</p>
-                    <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
-                    <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
-                    <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-                    <br><br>
-                    <p>様々な生き方</p>
-                    <%= link_to "", "#"%><br> 
-                    <%= link_to "", "#"%><br> 
+                  <%= render 'layouts/infsidebar' %>
                 </div>
             </div>
             <div class='col-xs-10'>
                 <h3>レビューの編集</h3>
-                <%= form_for [@hosp, @hosp_review], url:user_hosp_hosp_review_path(@hosp_review) do |f| %>
+
+                    <% if flash[:success] %>
+                    <p class="text-center"><%= flash[:success] %></p>
+                    <% end %>
+
+                    <% if @hosp_review.errors.any? %>
+                    <div id="error_explanation" class="alert alert-danger">
+                    <ul>
+                    <% @hosp_review.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                    <% end %>
+
+
+                <%= form_for [@hosp, @hosp_review], url:user_hosp_hosp_review_path(@hosp, @hosp_review) do |f| %>
                 <div class="form-group has-icon">
                     <label class="control-label" for="inputbody">内容</label>
                     <%= f.text_area :body, class:"form-control", id:"inputbody", placeholder:"コメント"%>
                 </div>
                 <%= f.submit "送信する",class:"btn-lg btn-danger" %>
                 <% end %>
+
+
+
             </div>
         </section>
     </div>

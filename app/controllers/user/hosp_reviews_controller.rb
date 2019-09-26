@@ -1,4 +1,5 @@
 class User::HospReviewsController < ApplicationController
+	before_action :authenticate_user!
     def create
 		hosp = Hosp.find(params[:hosp_id])
 		hosp_review = current_user.hosp_reviews.new(hosp_review_params)
@@ -7,8 +8,8 @@ class User::HospReviewsController < ApplicationController
 		   flash[:success] = "コメントを投稿しました！"
            redirect_back(fallback_location: root_url)
         else
-        	flash[:success] = "コメントの投稿に失敗しました！"
-        	redirect_back(fallback_location: root_url)
+			flash[:success] = "コメントの投稿に失敗しました！"
+			redirect_back(fallback_location: root_url)
         end
 	end
 
@@ -18,7 +19,6 @@ class User::HospReviewsController < ApplicationController
 		flash[:success] = "コメントを削除しました！！！"
         redirect_back(fallback_location: root_url)
     else
-    	flash[:success] = "コメントの削除に失敗しました！"
         redirect_back(fallback_location: root_url)
     end
 	end
@@ -26,13 +26,21 @@ class User::HospReviewsController < ApplicationController
 	def edit
 		@hosp_review = HospReview.find(params[:id])
 		@hosp = Hosp.find(params[:hosp_id])
+		if @hosp_review.user.id != current_user.id
+			redirect_to user_hosp_path(@hosp)
+		end
 	end
 
 	def update
-		hosp_review = HospReview.find(params[:id])
-        hosp_review.update(hosp_review_params)
-		@hosp = Hosp.find(params[:hosp_id])        
-		redirect_to user_hosp_path(@hosp)
+		@hosp = Hosp.find(params[:hosp_id])    
+		@hosp_review = HospReview.find(params[:id])
+		if @hosp_review.update(hosp_review_params)
+			flash[:success] = "レビューを編集しました！"
+			redirect_to user_hosp_path(@hosp)
+		 else
+			@hosp = Hosp.find(params[:hosp_id])	
+			render :edit
+		 end
 	end
 
     private

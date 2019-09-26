@@ -1,0 +1,36 @@
+<div class='body'>
+    <div class="container">
+        <section class="row">
+            <h1 class="col-xs-11 col-xs-offset-1">おすすめ情報 詳細</h1>
+                <div class='col-xs-12'>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>投稿者ID</th>
+                                <th>ジャンル</th>
+                                <th>タイトル</th>
+                                <th>内容</th>   
+                                <th>区分</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                <%= link_to admin_user_path(@recommend.user_id) do %>
+                                <%= @recommend.user_id %>
+                                <% end %></td>
+                                <td><%= @recommend.genre %></td>
+                                <td><%= @recommend.title %></td>
+                                <td><%= @recommend.body %></td>
+                                <td><%= @recommend.term %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        <div class="form-group has-icon">
+                            <%= link_to "削除する", admin_recommend_path(@recommend.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+                        </div>
+                </div>
+        </section>
+    </div>
+</div>
