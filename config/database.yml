@@ -11,6 +11,7 @@ default: &default
 
 development:
   <<: *default
+  database: db/development.sqlite3 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,4 +22,11 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: portfoliodb
+  adapter: mysql2
+  encoding: utf8mb4
+  collation: utf8mb4_general_ci
+  host: rds-my-sql-server.cxzogs77kxyn.ap-northeast-1.rds.amazonaws.com
+  username: miyayuri
+  password: yuriko0819
+
