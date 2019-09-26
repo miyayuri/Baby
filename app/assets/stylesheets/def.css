@@ -59,54 +59,54 @@ p {
     height: 300px;
 }
 .image1 {
-    background-image: asset-url("images/image1.jpg");
+    background-image: url(/images/image1.jpg);
     background-size: contain;
     background-position: center;
 }
 .image2 {
-    background-image: asset-url("images/image2.jpg");
+    background-image: url(/images/image2.jpg);
     background-size: contain;
     background-position: center;
 }
 .image3 {
-    background-image: asset-url("images/image3.jpg");
+    background-image: url(/images/image3.jpg);
     background-size: contain;
     background-position: center;
 }
 
 .image9 {
-    background-image: asset-url("images/image9.jpg");
+    background-image: url(/images/image9.jpg);
     background-size: contain;
     background-position: center;
     border-radius: 80px ;
 }
 .image7 {
-    background-image: asset-url("images/image7.jpg");
+    background-image: url(/images/image7.jpg);
     background-size: contain;
     background-position: center;
     border-radius: 80px ;
 }
 .image11 {
-    background-image: asset-url("images/image11.jpg");
+    background-image: url(/images/image11.jpg);
     background-size: contain;
     background-position: center;
     border-radius: 80px ;
 }
 
 .image17 {
-    background-image: asset-url("images/image17.jpg");
+    background-image: url(/images/image17.jpg);
     background-size: contain;
     background-position: center;
     border-radius: 80px ;
 }
 .image14 {
-    background-image: asset-url("images/image14.jpg");
+    background-image: url(/images/image14.jpg);
     background-size: contain;
     background-position: center;
     border-radius: 80px ;
 }
 .image13 {
-    background-image: asset-url("images/image13.jpg");
+    background-image: url(/images/image13.jpg);
     background-size: contain;
     background-position: center;
     border-radius: 80px ;
@@ -145,7 +145,7 @@ p {
     padding: 0;
 }
 .mainlink {
-    background-image: asset-url("images/image4.jpg");
+    background-image: url(/images/image4.jpg);
     padding: 50px 0 ;
     border-radius: 80px ;
     margin: 250px auto;
@@ -158,7 +158,7 @@ p {
     color: #333333;
 }
 .link{
-    background-image: asset-url("images/image4.jpg");
+    background-image: url(/images/image4.jpg);
     padding: 50px 0 ;
     margin: 50px auto;
     border-radius: 80px ;
@@ -188,7 +188,7 @@ p {
 
 /* サイドバー */
 .sidebar{
-    background-image: asset-url("images/image4.jpg");
+    background-image: url(/images/image4.jpg);
     padding: 50px 5px;
     padding-bottom: 100px;
     margin: 30px auto;
@@ -237,7 +237,7 @@ p {
     padding: 90px 100px;
     border: solid 2px #ffcb8a;
     border-radius: 3px 0 3px 0;
-    background-image: asset-url("images/image15.jpg");
+    background-image: url(/images/image15.jpg);
     background-size: contain;
     background-position: center; 
 
@@ -271,7 +271,7 @@ p {
     padding: 0.5em ;
     border: solid 3px #95ccff;
     border-radius: 8px;
-    background-image: asset-url("images/image5.jpg");
+    background-image: url(/images/image5.jpg);
 }
 .recomendlist .listgenre {
     position: absolute;
