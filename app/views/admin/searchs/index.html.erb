@@ -1,5 +1,5 @@
 <div class='body'>
-    <div class='container'>
+    <div class="container">
         <section class="row">
             <h1 class="col-xs-8 col-xs-offset-4">全投稿一覧</h1>
 
@@ -26,12 +26,11 @@
                         <tr>
                         <td><%= result.body %></td>
                         <td><%= link_to admin_user_path(result.user_id) do %><%= result.user.id %></td><% end %>
-                        <td><%= link_to admin_user_path(result.user_id) do %><%= result.user.name%></td><% end %>
-                        
+                        <td><%= link_to admin_user_path(result.user_id) do %><%= result.user.name%></td><% end %> 
                         </tr>
                     </tbody>
                     <% end %>
-                    </div>
+                    </tbody>
 
                 </div>
         </section>

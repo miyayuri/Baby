@@ -12,12 +12,21 @@ h4 {
 }
 p {
     color: #333333;
+    margin: 0 auto !important;
+}
+html,body {
+    /* background-image: asset-url(baby4.jpg); */
+    background-color: #F8F8FF;
+    min-height: 100%;
+    
 }
 .body {
     /* background-image: asset-url(baby4.jpg); */
     background-color: #F8F8FF;
     padding-top:30px;
     background-size: contain;
+    min-height: 100%;
+    padding-bottom: 45px;
     /* background-position: center; *//* 背景画像を中央に配置 */
 }
  .header {
@@ -45,10 +54,12 @@ p {
     float: left;
     margin-right: 5px;
 }
-.footer{
+footer {
      background-color: #F0F8FF !important ;
      width: 100%;
      height: 45px;
+     position: fixed;
+     bottom: 0;
 }
 .login{
     margin: 20px;
@@ -193,7 +204,7 @@ p {
     padding-bottom: 100px;
     margin: 30px auto;
     font-size: 10px;
-    font-family: 'Manjari', sans-serif;
+    font-family: 'Manjari', sans-serif
 }
 
 /* ユーザーshow */

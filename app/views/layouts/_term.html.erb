@@ -10,7 +10,6 @@
                         <p>期間中の過ごし方</p>
                         <%= link_to "オススメの過ごし方を登録", user_infer_new_path %><br>
                         <%= link_to "過ごし方の一覧", user_infer_index_path %><br>
-                        <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %>
                         <br><br>
                         <%# <p>様々な生き方</p>
                         <%= link_to "", "#"%><br> 
@@ -27,13 +26,13 @@
                         <p>期間中の過ごし方</p>
                         <%= link_to "オススメの過ごし方を登録", user_preg_latest_path %><br>
                         <%= link_to "過ごし方の一覧", user_preg_list_path %><br>
-                        <%= link_to "私のやってみたい一覧！",user_recommend_likes_path %><br>
-                    <% end %>
+                        <% end %>
 
                         <% if user_signed_in? %>
                         <br><br>
                         <p>マイページ</p>
-                        <%= link_to "マイページ",user_user_path(current_user.id) %><br>
-                        <%= link_to "LOGOUT", destroy_user_session_path, class:"text-center", method: :delete %>
+                        <%= link_to "私のやってみたいこと！",user_recommend_likes_path %><br>
+                        <%= link_to "MYPAGE",user_user_path(current_user.id) %><br>
+                        <%= link_to "LOGOUT", destroy_user_session_path, method: :delete %>
                         <% end %>
                     </div>
