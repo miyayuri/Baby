@@ -1,7 +1,7 @@
 <div class='body'>
     <div class="container">
         <section class="row row-eq-height">
-        <h2 class="title text-center">おすすめの病院登録</h2>
+        <h2 class="col-xs-7 col-xs-offset-5">おすすめの病院登録</h2>
             <div class="text-center">
                 <% if flash[:success] %>
                 <p class="text-center"><%= flash[:success] %></p>
@@ -24,9 +24,10 @@
             
             <div class='col-xs-10'>
             <% if user_signed_in? %>
+            <div class="hospbox">
                 <%= form_for @hosp, url: user_hosps_path do |hosp| %>
                     <h4 class="col-xs-12">病院名</h4>
-                    <%= hosp.text_field :name ,class:"form-control" %>
+                    <%= hosp.text_field :name  %>
 
                     <h4 class="col-xs-12">都道府県</h4>
                     <%= hosp.collection_select :prefecture_id,  Prefecture.all, :id, :name, {}, placeholder: "選択してください", class: 'form-control h4' %> 
@@ -34,15 +35,17 @@
                     <h4 class="col-xs-12">内容</h4>
                     <p class="">どんな風によかったか、書いてね！</p>
                     <%= hosp.text_area :body, class:"form-control" %>
-
-                    <%= hosp.submit "登録する", class:"form-control btn btn-primary" %>
+                    <div class="hosplink">
+                    <%= hosp.submit "登録する", class:"btn btn-default text-center" %>
+                    </div>
                     </div>
                 <% end %>
+            </div>
             <% else %>
-            <div class="text-center">
-                <P>会員登録すると、自分のオススメを登録できるよ！</p>
-                <li><%= link_to_unless_current "ログインする", new_user_session_path, class:"hm-link text-center h5" %></li>
-                <li><%= link_to_unless_current "会員登録する", new_user_registration_path, class:"hm-link text-center h5" %></li>
+            <div class="unuser text-center">
+                <h4 class="unlink"><b>会員登録すると、自分のオススメを登録できるよ！</h4></b>
+                <b><%= link_to_unless_current "ログインする", new_user_session_path, class:"unlink text-center h5" %></b>
+                <%= link_to_unless_current "会員登録する", new_user_registration_path, class:"unlink text-center h5" %>
             <% end %>
             </div>
             </div>
