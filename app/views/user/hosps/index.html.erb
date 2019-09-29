@@ -33,7 +33,7 @@
 
                         <div class="hospmain">
                         
-                            <p class="hosptext"><b>病院のなまえ</p><br>
+                            <p class="hosptext"><b>医院の名前</p><br>
                             <p class="hosptext"><b>都道府県はここだったよ</p><br>
                             <p class="hosptext"><b>こんなところ良かった！事が書いてあるよ！</p><br>
                             <p class="hosptext"><b>行ってみて良かったよボタン</p><br>
@@ -41,9 +41,9 @@
 
                         <% @hosps.each do |hosp| %>
                         <div class="hospall">
-                            <p>病院のなまえ：<%= hosp.name %></p><br>
-                            <p>都道府県：<%= hosp.prefecture.name %></p><br>
-                            <p>ないよう：<%= hosp.body %></p><br>
+                            <p>医院の名前：<br><%= hosp.name %></p><br>
+                            <p>都道府県：<br><%= hosp.prefecture.name %></p><br>
+                            <p>内容：<br><%= hosp.body %></p><br>
                             <p><%= hosp.hosp_likes.count %> オススメ</p><br>
                             <p><%= link_to "詳細を見る", user_hosp_path(hosp.id), class:"btn btn-default form-control" %></p>
                         </div>
