@@ -24,9 +24,21 @@
                     <% end %>
 
                 <div class="hospmain clearfix">
-                    <span class="listgenre"><%= @hosp.name %></span>
-                    <label class="listtitle"><%= @hosp.prefecture.name%></label><br>
-                     <p class="listbody"><%= @hosp.body %></p>
+
+                    <label class="hosptext"><b>医院の名前</label><br>
+                    <label class="hospbodytext">
+                    <h4 class="hosptext"><%= @hosp.name %></h4>
+                    </label><br>
+
+                    <label class="hosptext"><b>都道府県</label><br>
+                    <label class="hospbodytext">
+                    <h4 class="hosptext"><%= @hosp.prefecture.name%></h4>
+                    </label><br>
+
+                    <label class="hosptext"><b>内容</label><br>
+                    <label class="hospbodytext">
+                    <h4 class="hosptext"><%= @hosp.body %></h4>
+                    </label><br>
 
                     <% if user_signed_in? %>
                     <%# いいね!ボタンの実装  %>
@@ -49,8 +61,8 @@
                         </div>
                             
                     <% else %>
-                        <div class="unuser text-center">
-                            <p class="unlink">会員登録して、良かった医院をオススメしよう！</p>                
+                        <div class="text-center">
+                            <h4 class="unlink"><b>会員登録して、良かった医院をオススメしよう！</h4>                
                         </div>
                     <% end %>
 
@@ -61,7 +73,31 @@
                     <% end %>
                     </div>
                 </div>
+              
 
+              <%# review %>
+                <div class="">
+                    <h3 class="text-center"><b>ユーザーレビュー</b></h3>
+                    
+                    <% @hosp.hosp_reviews.each do |review| %>
+                        <div class="review">
+                            <p><%= review.user.nickname %></p>
+                            <p><%= review.body %></p>
+
+                            <% if user_signed_in? && current_user.id == review.user_id %>
+                            <label class="reviewlink"><%= link_to "編集", edit_user_hosp_hosp_review_path(@hosp.id,review.id), class:"botan1" %></label>
+                            <label class="reviewlink"><%= link_to "削除", user_hosp_hosp_review_path(@hosp.id,review.id), method: :delete %></label>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+
+                    <% if user_signed_in? %>
+                        <%= form_for [@hosp, @hosp_review], url:user_hosp_hosp_reviews_path(@hosp)  do |f| %>
+                        <%= f.text_area :body, class: "form-control",placeholder: "コメントをここに" %>
+                        <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+                        <% end %>
+                    <% end %>
             </div>
         </div>
     </div>

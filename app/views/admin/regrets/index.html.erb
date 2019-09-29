@@ -8,7 +8,7 @@
                     <thead>
                         <tr>
                             <th>投稿者ID</th>
-                            <%# <th>投稿者名</th> %>
+                            <th>投稿者名</th>
                             <th>内容</th>
                             <th>時期</th>
                         </tr>
@@ -21,7 +21,7 @@
                             <%= link_to admin_user_path(regret.user_id) do %>
                             <%= regret.user.id%>
                             <%end %></td>
-                            <%# <td><%= regret.user.name %></td> %>
+                            <td><%= regret.user.name %></td>
                             <td><%= regret.body %></td>
                             <td><%= regret.period.name %></td>
                             <td>

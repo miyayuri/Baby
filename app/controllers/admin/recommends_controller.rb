@@ -1,15 +1,15 @@
 class Admin::RecommendsController < ApplicationController
     before_action :authenticate_admin!
     def index
-        @recommends = Recommend.where(term: '不妊')
+        @recommends = Recommend.where(term: '不妊').reverse_order
     end
 
     def list
-        @recommends = Recommend.where(term: '妊娠')
+        @recommends = Recommend.where(term: '妊娠').reverse_order
     end
 
     def summary
-        @recommends = Recommend.all
+        @recommends = Recommend.all.reverse_order
     end
     
     def show

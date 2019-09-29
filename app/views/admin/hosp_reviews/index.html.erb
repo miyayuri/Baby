@@ -8,6 +8,7 @@
                     <thead>
                         <tr>
                             <th>投稿者ID</th>
+                            <th>投稿者名</th>
                             <th>病院ID</th>
                             <th>レビュー内容</th>
                             <th></th>
@@ -20,6 +21,7 @@
                             <%= link_to admin_user_path(review.user_id) do %>
                             <%= review.user_id %>
                             <% end %></td>
+                            <td><%= review.user.name %></td>
                             <td>
                             <%= link_to admin_hosp_path(review.hosp_id) do %>
                             <%= review.hosp_id %>
