@@ -23,7 +23,7 @@
                     <% end %>
                     <% end %>
 
-                <div class="recommendbox">
+                <div class="hospbox">
                     <%= form_for @recommend, url:user_recommend_path(@recommend) do |recommend| %>
                     <%= recommend.hidden_field :term %>
                     
@@ -38,7 +38,7 @@
                     <h4 class="">内容</h4>
                     <%= recommend.text_area :body, class:"form-control" %>
 
-                    <div class="recommendlink">
+                    <div class="hosplink">
                     <%= recommend.submit "登録内容を変更する", class:"btn btn-default" %>
                     <%= link_to "登録内容を削除する", user_recommend_path(@recommend.id), class:"btn btn-danger", method: :delete %>
                     <% end %>

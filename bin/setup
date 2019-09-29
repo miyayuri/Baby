@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby2.5
+#!~/.rbenv/shims/ruby
 require 'fileutils'
 include FileUtils
 

@@ -23,10 +23,10 @@
 
                 <% else %>
 
-                    <div class="text-center">
-                        <P>会員登録すると、自分のオススメを登録できるよ！</p>
-                        <%= link_to_unless_current "ログインする", new_user_session_path, class:"hm-link text-center h5" %>
-                        <%= link_to_unless_current "会員登録する", new_user_registration_path, class:"hm-link text-center h5" %>
+                    <div class="unuser text-center">
+                        <h4 class="unlink"><b>会員登録すると、自分のオススメを登録できるよ！</h4></b>
+                        <%= link_to_unless_current "ログインする", new_user_session_path, class:"unlink text-center h5" %>
+                        <%= link_to_unless_current "会員登録する", new_user_registration_path, class:"unlinktext-center h5" %>
                     </div>
                 <% end %>
             </div>

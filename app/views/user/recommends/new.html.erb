@@ -28,8 +28,8 @@
                     <%= recommend.hidden_field :term, {value: '不妊'} %>
  
                         <h4 class="">ジャンル</h4>
-                        <%= recommend.radio_button :genre, "アクティブ" %> アクティブ </label>
-                        <%= recommend.radio_button :genre, "リラックス" %> リラックス </label>
+                        <label><%= recommend.radio_button :genre, "アクティブ" %> アクティブ </label>
+                        <label><%= recommend.radio_button :genre, "リラックス" %> リラックス </label>
 
                         <h4 class="">タイトル</h4>
                         <%= recommend.text_field :title %>
@@ -42,10 +42,10 @@
                 <% end %>
                 </div>
             <% else %>
-                <div class="recommendbox text-center">
-                <P>会員登録すると、自分のオススメを登録できるよ！<br>
-                <%= link_to_unless_current "ログインする", new_user_session_path, class:"hm-link text-center h4" %>
-                <%= link_to_unless_current "会員登録する", new_user_registration_path, class:"hm-link text-ceenter h4" %></p>
+                <div class="unuser text-center">
+                <h4 class="unlink"><b>会員登録すると、自分のオススメを登録できるよ！</h4></b>
+                <%= link_to_unless_current "ログインする", new_user_session_path, class:"unlink text-center h5" %>
+                <%= link_to_unless_current "会員登録する", new_user_registration_path, class:"unlink text-ceenter h5" %></p>
                 </div>
             <% end %>    
             </div>

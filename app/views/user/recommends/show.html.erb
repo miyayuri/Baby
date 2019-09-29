@@ -22,13 +22,13 @@
                                 </div>
                             <% if @recommend.favorited_by?(current_user) %>
                                 <%= link_to user_recommend_recommend_likes_path(@recommend), method: :delete do %>
-                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: 60px; color: red"></span>
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: 60px; color: #C71585"></span>
                                 <% end %>
                                 <%= @recommend.recommend_likes.count %> やってみたい！
                                 
                             <% else %>
                                 <%= link_to user_recommend_recommend_likes_path(@recommend), method: :post do %>
-                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: 60px;"></span>
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: 60px; color: #555555"></span>
                                <% end %>
                                 <%= @recommend.recommend_likes.count %> やってみたい！
                             <% end %>
