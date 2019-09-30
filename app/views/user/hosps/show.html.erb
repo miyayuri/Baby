@@ -81,7 +81,7 @@
                     
                     <% @hosp.hosp_reviews.each do |review| %>
                         <div class="review">
-                            <p><%= review.user.nickname %></p>
+                            <%# <p><%= review.user.nickname %>
                             <p><%= review.body %></p>
 
                             <% if user_signed_in? && current_user.id == review.user_id %>
