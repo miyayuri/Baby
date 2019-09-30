@@ -14,11 +14,11 @@
                     <thead>
                         <tr>
                             <th>投稿者ID</th>
-                            <th>投稿者名</th>
-                            <th>ジャンル</th>
+                            <th>区分</th>
+                            <%# <th>投稿者名</th> %>
+                            <%# <th>ジャンル</th> %>
                             <th>タイトル</th>
                             <th>内容</th>   
-                            <th>区分</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -29,12 +29,14 @@
                              <%= link_to admin_user_path(recommend.user_id) do %>
                             <%= recommend.user_id %>
                             <% end %></td>
-                            <td><%= recommend.user.name %>
-                            <td><%= recommend.genre %></td>
+                            <%# <td><%= recommend.user.name %> 
+                            <td><%= recommend.term %></td>
+                            <%# <td><%= recommend.genre %></td>
                             <td><%= recommend.title %></td>
                             <td><%= recommend.body %></td>
-                            <td><%= recommend.term %></td>
-                            <td><%= link_to "詳細を見る", admin_recommend_path(recommend.id), class:"btn btn-success" %>
+                            <td><%= link_to "詳細", admin_recommend_path(recommend.id), class:"btn btn-success" %>
+                            <td><%= link_to "削除", admin_recommend_path(recommend.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+
                         </tr>
                         <% end %>
                     </tbody>

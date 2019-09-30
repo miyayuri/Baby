@@ -41,8 +41,10 @@
                             <td><%= hosp.name %></td>
                             <td><%= hosp.prefecture.name %></td>
                             <td><%= hosp.body %></td>
-                            <td><%= hosp.hosp_likes.count %> オススメ
-                            <td><%= link_to "詳細を見る", admin_hosp_path(hosp.id), class:"btn btn-success" %>
+                            <td><%= hosp.hosp_likes.count %> 
+                            <td><%= link_to "詳細", admin_hosp_path(hosp.id), class:"btn btn-success" %>
+                            <td><%= link_to "削除", admin_hosp_path(hosp.id), class:"alert-link btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+
                         </tr>
                     <% end %>
                     </tbody>

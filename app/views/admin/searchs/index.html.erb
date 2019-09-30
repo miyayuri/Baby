@@ -18,7 +18,7 @@
                         <tr>
                             <th>内容</th>
                             <th>投稿者ID</th>
-                            <th>投稿者名</th>
+                            <%# <th>投稿者名</th> %>
                         </tr>
                     </thead>
                     <% @result&.each do |result| %>
@@ -26,7 +26,9 @@
                         <tr>
                         <td><%= result.body %></td>
                         <td><%= link_to admin_user_path(result.user_id) do %><%= result.user.id %></td><% end %>
-                        <td><%= link_to admin_user_path(result.user_id) do %><%= result.user.name%></td><% end %> 
+                        <%# <td><%= link_to admin_user_path(result.user_id) do %>
+                        <%# <%= result.user.name%>
+                        <%# <% end  %>  
                         </tr>
                     </tbody>
                     <% end %>
