@@ -5,12 +5,15 @@ class User::HospsController < ApplicationController
 
     def index
         @q= Hosp.includes(:prefecture).ransack(params[:q])
-        @hosps = @q.result(distinct: true)
+        @hosps = @q.result(distinct: true).reverse_order
+        # いいねされていないものが表示されなくなる。いいね数順番
+        # @hosps = Hosp.find(HospLike.group(:hosp_id).order('count(hosp_id) desc').pluck(:hosp_id))
     end
     
     def show
         @hosp = Hosp.find(params[:id])
         @hosp_review = HospReview.new
+        @hosp.hosp_reviews.reverse_order
     end
 
     def edit

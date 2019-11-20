@@ -1,7 +1,7 @@
 class Admin::HospReviewsController < ApplicationController
     before_action :authenticate_admin!
     def index
-        @reviews = HospReview.all
+        @reviews = HospReview.all.reverse_order
 
     end
 

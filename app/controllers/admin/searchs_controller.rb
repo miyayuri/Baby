@@ -7,7 +7,6 @@ class Admin::SearchsController < ApplicationController
         @recommends  = Recommend.ransack(body_cont: q).result
         @regrets = Regret.ransack(body_cont: q).result
        
-        @result = @hosps + @hospreviews + @recommends +@regrets
-
+        @result = @hosps + @hospreviews + @recommends + @regrets
     end
 end

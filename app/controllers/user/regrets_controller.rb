@@ -1,7 +1,7 @@
 class User::RegretsController < ApplicationController
     def index
         @regret = Regret.new
-        @regrets = Regret.all
+        @regrets = Regret.all.reverse_order
     end
     
     def create
